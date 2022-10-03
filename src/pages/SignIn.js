@@ -1,7 +1,7 @@
 import React from 'react'
 import SignIn from '../components/Sign-In/SignIn'
-export default function signIn() {
+export default function SignIn() {
   return (
-    <signIn></signIn>
+    <SignIn></SignIn>
   )
 }
