@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@300&family=Cairo:wght@300&family=Gulzar&family=Raleway:wght@200&family=Varela+Round&display=swap');
+
+.nav{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 10vh;
+    
+
+    background: rgb(218,83,9);
+    background: linear-gradient(295deg, rgba(218,83,9,0.8422273781902552) 16%, rgba(240,121,5,1) 43%, rgba(238,144,12,1) 67%, rgba(246,173,52,1) 84%);
+}
+
+.logos{
+    width: 25px!important;
+    margin-top: 15px;
+}
+
+
+
+.parrafos{
+    font-size: 10px;
+    font-weight: bolder;
+    color: black;
+    font-family: 'Varela Round', sans-serif;
+}
+
+
+.containerLinks{
+  text-decoration: none!important;
+  
+    width: 10%;
+}
+
+ .burgerOff{
+        display: none;
+    }
+
+    .burgerOn{
+        display: flex;
+        width: 40%;
+        justify-content: space-around;
+        
+    }
+
+/* From uiverse.io by @gagan-gv */
+/* From uiverse.io by @joe-watson-sbf */
+.btn {
+    
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 8px;
+    border: none;
+    background-color: transparent;
+    color: black;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .btn > * {
+    display: inline-block;
+    transition: all ease-in-out .5s;
+  }
+  
+  .btn__visible {
+    padding: 1.2rem 3rem;
+    font-size: 20px;
+    
+  }
+  
+  .btn__invisible {
+    width: 100%;
+    position: absolute;
+    padding: 1.2rem 0;
+    left: 0;
+    top: -100%;
+    font-size: 15px;
+    font-weight: bolder;
+    font-family: 'Varela Round', sans-serif;
+  }
+  
+  .btn:hover {
+    background-color: transparent
+  }
+  
+  .btn:hover .btn__visible {
+    transform: translateY(100%);
+  }
+  
+  .btn:hover .btn__invisible {
+    top: 0;
+  }
+  
+  .btn:focus {
+    outline: none;
+  }
+
+@media(min-width: 768px){
+    .nav{
+        height: 15vh;
+    }
+
+    .burgerOff{
+        display: contents;
+        
+        }
+
+    .burgerOn{
+        display: none;
+      
+    }
+
+    .btn{
+        display: none;
+    }
+
+    .logos{
+        width: 40px!important;
+        margin-top: 25px;
+    }
+    
+    .parrafos{
+        font-size: 15px;
+    }
+}
+
