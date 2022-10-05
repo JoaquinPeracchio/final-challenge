@@ -1,0 +1,16 @@
+.producs-container{
+    justify-content: space-evenly;
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card-product{
+    margin: 10px;
+    height: 350px;
+    min-width: 288px;
+}
+.welcome-container{
+    background-color: wheat;
+    height: 100%;
+}
