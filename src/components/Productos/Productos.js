@@ -1,6 +1,5 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
 import './Productos.css'
 
 export const Productos = () => {
@@ -20,7 +19,7 @@ export const Productos = () => {
             img: 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/38685/image-upload/CatLogoDesign003.jpg',
             title: 'titulo3',
             description: 'description3'
-        },{
+        }, {
             img: 'https://www.zilliondesigns.com/blog/wp-content/uploads/Cat-logos.png',
             title: 'titulo1',
             description: 'description1'
@@ -47,11 +46,13 @@ export const Productos = () => {
                 </Card.Text>
             </Card.Body>
         </Card>
-   
 
-  return (
-    <div className="producs-container">
-        {productos.map(cardBootstrap)}
-    </div>
-  )
+    return (
+        <div>
+            <input className="product-filter" type="text" placeholder="Search product"></input>
+            <div className="producs-container">
+                {productos.map(cardBootstrap)}
+            </div>
+        </div>
+    )
 }
