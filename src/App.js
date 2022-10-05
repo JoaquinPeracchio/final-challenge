@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from './Layouts/Layout';
 import Welcome from './pages/Welcome';
-import ShowComments from './components/comentarios-respuestas/ShowComments';
+import ShowComments from './components/Comments/ShowComments';
 
 function App() {
 
