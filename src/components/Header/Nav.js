@@ -2,8 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { Link as LinkRouter } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import "./Nav.css"
+import Logs from './Logs'
 
 const Nav = () => {
+
+  let pages = [
+    {
+      name: "Home",
+      to: "/",
+       imagen: "https://cdn-icons-png.flaticon.com/512/2413/2413074.png", 
+       alt: "casa"
+    }
+  ]
   
 
   const link = (page) =>
@@ -23,7 +33,6 @@ const Nav = () => {
   }
 
 
-
   return (
     <div className='nav'>
       <button className="btn" onClick={handleOpenMenu}>
@@ -32,14 +41,15 @@ const Nav = () => {
       </button>
       <div className='burgerOn'>
         {open
-          ? <p>Paginas</p> //pages.map(link)
+          ? pages.map(link)
           : null
         }
       </div>
 
       <div className='burgerOff'>
-        <p>paginas</p> {/*pages.map(link)*/}
+        {pages.map(link)}
       </div>
+      <Logs/>
     </div>
   )
 }
