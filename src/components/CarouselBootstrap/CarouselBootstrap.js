@@ -11,22 +11,25 @@ export default function CarouselBootstrap() {
         {
             img: 'https://www.zilliondesigns.com/blog/wp-content/uploads/Cat-logos.png',
             title: 'titulo1',
-            description: 'description1'
+            description: 'description1',
+            alt: 'img1'
         },
         {
             img: 'https://static.vecteezy.com/system/resources/previews/006/862/726/original/icon-of-a-cat-animal-logo-with-an-adorable-pose-free-vector.jpg',
             title: 'titulo2',
-            description: 'description2'
+            description: 'description2',
+            alt: 'img2'
         },
         {
             img: 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/38685/image-upload/CatLogoDesign003.jpg',
             title: 'titulo3',
-            description: 'description3'
+            description: 'description3',
+            alt: 'img3'
         },
     ]
 
     const bootstrapCardItem = (items) =>
-        <Carousel.Item>
+        <Carousel.Item key={items.alt}>
             <Card style={{ width: '18rem' }}>
                 <Card.Img className="imgCarousel" src={items.img} />
                 <Card.Body>
