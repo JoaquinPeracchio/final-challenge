@@ -11,6 +11,8 @@ function App() {
         <Layout>
           <Routes>
             <Route path='/' element={<Welcome/>}/>
+            <Route path='/signup' />
+            <Route path='/signin' />
           </Routes>
         </Layout>
       </BrowserRouter>

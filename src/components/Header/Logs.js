@@ -24,6 +24,7 @@ const Logs = () => {
           ? <div onClick={handleOpenMenu} className='sig-nav-container'>
             <p>SignUp</p>
             <p>SignIn</p>
+            <p>My Profile</p>
             <p>LogOut</p>
           </div>
           : null
