@@ -11,7 +11,9 @@ function App() {
       <BrowserRouter>
         <Layout>
           <Routes>
-            <Route path='/' element={<Welcome />} />
+            <Route path='/' element={<Welcome/>}/>
+            <Route path='/signup' />
+            <Route path='/signin' />
             <Route path='/comments' element={<ShowComments />} />
           </Routes>
         </Layout>

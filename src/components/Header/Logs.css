@@ -17,6 +17,12 @@
     top: 15%;
    left: 86%;  
    z-index: 1;
+   border: 2px solid black;
+   
+
+   width: 124px;
+   background-color: rgba(211, 142, 13, 0.801);
+   border-radius: 8px;
 }
 
 @media(min-width: 768px){
