@@ -3,16 +3,17 @@ import React, { useEffect, useState } from 'react'
 export default function Carrito({props,onclose}) {
 let elementos = [props]
 const [price,setPrice]=useState()
-const [remove,setRemove]=useState()
+const [remover,setRemove]=useState()
 const [stock,setStock]=useState([])
+const [show,setShow]=useState(false)
 
 
-useEffect(()=>{
- let  removeElem = elementos.filter(e => e.id === remove)
- elementos.pop(removeElem)
+ useEffect(()=>{
+ let  removeElem = elementos.filter(e => e.id === remover)
+  elementos.pop(removeElem)
 
 
-},[remove])
+ },[remover])
 
 
 const saveElement =()=>{
@@ -20,34 +21,31 @@ const saveElement =()=>{
 }
 
 const clearElement = ()=>{
-  elementos===null
+  setShow(false)
+  
+  stock === null
 }
 
-useEffect(()=>{/// esta es la logica que me hace ruido , habria que modificar
-  
-  let buy ={
-    id : elementos.user._id,
-    product:elementos.product
+// useEffect(()=>{
+//   /*debo crear dos arrays de objetos, con el mismo objeto por duplicado , cada uno tendra su propio controllador llamado buy y sell estos controladores van a recorrer el array con for y van a buscar coincidencias con el respectivo id que queramos llenar (uno del que vende y otro del que compra cuando encuentra el id llena los campos necesarios de venta , quantity para restar al stock y demas campos necesarios)*/
 
-  
 
-  }
- 
-  let sell ={
-    id: elementos.user._id,
-    product:elementos.product._id,
-    stock :elementos.stock -1
-  }
-  let notification = {
-    idSell: elementos.user._id,
-    //idBuy obtener del localStorage o Slice redux
-    name : elementos.user.name,
-    product : elementos.product._id,
-    productName : elementos.product.name
-  }
-})
+// arr.push(buy)
 
-const handleSubmit = ()=>{
+// createObject()
+
+// },[elem])
+
+const handleSubmit = (e)=>{
+  e.preventDefault()
+  createObject([elementos])
+  if(stock!=null){
+    //mutationsell(stock)
+    //mutationbuy(stock)
+
+  }else{
+    alert('your carrito its empty')
+  }
 
 }
 
@@ -71,15 +69,42 @@ let showCarrito =(item)=>(
   <p>Current State: {item.state}</p>
   <button value={item.id}  onClick={()=>{setRemove(item.id)}}>X</button>
 </div>
+
   
 )
+const createObject = (e,remove)=>{
+  let arr =[]
+if(e === Array){
+  e.map((e)=>{
+    let obj ={
+      idcomprador:e.id,
+      idvendedor:'',
+      idproducto:'',
+      price:'',
+      stock:'',
+    }
+    arr.push(obj)
+  })
 
 
+}else{
+  let obj ={
+    idcomprador:e.id,
+    idvendedor:'',
+    idproducto:'',
+    price:'',
+    stock:'',
+  }
+  arr.push(obj)
 
+  }
+    setStock(arr)
+  }
+  
   return (
     <div>
       <button onClick={onclose}></button>
-      {elementos?elementos.map(showCarrito):''}
+      {show?elementos?elementos.map(e => showCarrito(e) ):'':''}
       <h3>Total de Compra: {price}</h3>
       <button onClick={saveElement}>save</button>
       <button onClick={clearElement}>Clear</button>
