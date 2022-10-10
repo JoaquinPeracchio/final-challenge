@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
+import Details from '../Details/Details';
 import './Productos.css'
 import {Link as LinkRouter} from 'react-router-dom'
 
 export const Productos = () => {
+    const [state,setState]=useState(false)
+    const [product , setProduct]=useState({})
 
     const productos = [
         {
@@ -43,9 +46,20 @@ export const Productos = () => {
         },
     ]
 
+    const handleClose =()=>{
+        setState(false)
+    }
+
+    const showDetails =(e)=>{
+        setProduct(e)
+        setState(true)
+    }
+
     const cardBootstrap = (items) =>
         <Card key={items.alt} className="card-product" style={{ width: '18rem' }}>
+            <button style={{border:'none' , cursor:'pointer'}} onClick={()=>showDetails({image:items.img,title:items.title,description:items.description})}>
             <Card.Img className="imgCarousel" src={items.img} />
+             </button>
             <Card.Body>
                 <Card.Title>{items.title}</Card.Title>
                 <div>
@@ -53,13 +67,14 @@ export const Productos = () => {
                     <button className='button-card'>Add to cart</button>
                 </div>
             </Card.Body>
+            <button style={{border:'none', cursor:'pointer'}}>Add carrito</button>
         </Card>
 
     return (
         <div>
             <input className="product-filter" type="text" placeholder="Search product"></input>
             <div className="producs-container">
-                {productos.map(cardBootstrap)}
+                {!state?productos.map(cardBootstrap):<Details props={product} onclose={handleClose}/>}
             </div>
             <div className='button-back'>
             <LinkRouter to="/" ><button type="" className='button-backhome'>GO HOME</button></LinkRouter>
