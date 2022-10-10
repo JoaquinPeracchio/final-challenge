@@ -17,3 +17,9 @@
 .product-filter{
     margin-top: 10px;
 }
+.button-card{
+    border-radius: 8px;
+    border: 1px solid black;
+    margin-left: 10px;
+    margin-right: 10px;
+}
