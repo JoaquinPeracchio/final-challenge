@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 import './Productos.css'
+import {Link as LinkRouter} from 'react-router-dom'
 
 export const Productos = () => {
 
@@ -58,6 +59,9 @@ export const Productos = () => {
             <input className="product-filter" type="text" placeholder="Search product"></input>
             <div className="producs-container">
                 {productos.map(cardBootstrap)}
+            </div>
+            <div className='button-back'>
+            <LinkRouter to="/" ><button type="" className='button-backhome'>GO HOME</button></LinkRouter>
             </div>
         </div>
     )
