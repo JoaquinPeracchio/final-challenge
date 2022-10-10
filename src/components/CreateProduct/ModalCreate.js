@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2'
 import { useCreateItineraryMutation } from '../../features/citiesAPI';
-export default function ModalCreate({onClose }) {
+export default function ModalCreate({ children, onClose }) {
 
   const [createItinerary] = useCreateItineraryMutation()
-  const getUser = useSelector(state => state.auth.user)
+  const userSession = JSON.parse(localStorage.getItem('user'))
   const [photo, setPhoto] = useState()
   const [price, setPrice] = useState()
-  const [type, setType] = useState()
+  const [tags, setTags] = useState()
   const [name, setName] = useState()
   const [edit, setEdit] = useState()
+
   const [stock, setStock] = useState(0)
   const [quantity,setQuantity]=useState()
   const [variety,setVariety]=useState()
@@ -23,6 +23,13 @@ export default function ModalCreate({onClose }) {
     setPhoto(e.target.value)
   }
 
+  const handleDuration = (e) => {
+    setDuration(e.target.value)
+
+  }
+  const handleTags = (e) => {
+    setTags(e.target.value)
+  }
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -37,20 +44,23 @@ export default function ModalCreate({onClose }) {
 
   useEffect(() => {
     let objCreate = {
-      user: getUser,
-      photo: photo,
+      user: children.idUser,
       name: name,
+
       variety : variety,
       stock: stock,
       price: price,
       type: type,
       quantity :quantity,
       date: dayMonth
+
+
+
     }
 
     setEdit(objCreate)
 
-  }, [photo, price, tags, name, stock])
+  }, [photo, price, tags, name, duration])
 
 
 
@@ -89,8 +99,10 @@ export default function ModalCreate({onClose }) {
 
   return (
     <div className='createItiner'>
+
       <h3 className="createH3">Create your New Product </h3>
       <p >Name Of Publication </p>
+
       <input type='text' onChange={handleName}></input>
       <p >Name Of Product </p>
       <input type='text' onChange={e =>setVariety(e.target.value)}></input>
@@ -99,10 +111,13 @@ export default function ModalCreate({onClose }) {
       <h4 className="createH4">User :   {userSession.name} </h4>
 
 
+      <p >City   {children.city} </p>
+
       <p >Image  </p>
-      <input type='file' onChange={handlePhoto}></input>
+      <input type='text' onChange={handlePhoto}></input>
       <p >Price </p>
       <input type='Number' onChange={handlePrice}></input>
+
 
       <p >stock  </p>
       <input type='Number' onChange={e => setStock(e.target.value)} ></input>
@@ -115,6 +130,7 @@ export default function ModalCreate({onClose }) {
         <option value='Other'>Other</option>
       </select>
       <p>Date : {dayMonth}</p>
+
       <div className='createButtons'>
 
         <button onClick={handleSubmit} className='save'>Save</button>

@@ -11,7 +11,12 @@ const Nav = () => {
       name: "Home",
       to: "/",
        imagen: "https://cdn-icons-png.flaticon.com/512/2413/2413074.png", 
-       alt: "casa"
+       alt: "theHome"
+    },{
+      name: "Producs",
+      to: "/products",
+       imagen: "https://cdn3.iconfinder.com/data/icons/agriculture-103/126/Vegetables-harvest-food-shopping-bag-512.png", 
+       alt: "products"
     }
   ]
   
