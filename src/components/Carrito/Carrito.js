@@ -1,45 +1,62 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 export default function Carrito({props,onclose}) {
-let elementos = [props]
+
+let elementos = [props] 
 const [price,setPrice]=useState()
 const [remover,setRemove]=useState()
-const [stock,setStock]=useState([])
 const [show,setShow]=useState(false)
-
+const [counter , setCounter]=useState({})
+const idUser = useSelector(state => state.auth.id)
+/* las props deben llegar con { quantity = 0 */
 
  useEffect(()=>{
- let  removeElem = elementos.filter(e => e.id === remover)
-  elementos.pop(removeElem)
+  if(!remover){
+    ''
+  }else{
+
+    let  removeElem = elementos.filter(e => e.id === remover)
+     elementos.pop(removeElem)
+
+     let  removeArr = arr.filter(e => e.id === remover)
+     arr.pop(removeArr)
+     
+     remover = ''
+  }
 
 
  },[remover])
 
+ useEffect(()=>{
+  if(counter){
+    let  counterElem = arr.filter(e => e.product._id === counter.id)
+     counterElem.quantity === counter.quantity
+      counterElem.price === counterElem.price * quantity
+   
+
+  }else{
+    ''
+  }
+ 
+  },[counter])
+
 
 const saveElement =()=>{
-  localStorage.setItem('carrito',JSON.stringify(elementos))
+  localStorage.setItem('carrito',JSON.stringify(arr))
 }
 
 const clearElement = ()=>{
   setShow(false)
   
-  stock === null
+  arr === null
 }
 
-// useEffect(()=>{
-//   /*debo crear dos arrays de objetos, con el mismo objeto por duplicado , cada uno tendra su propio controllador llamado buy y sell estos controladores van a recorrer el array con for y van a buscar coincidencias con el respectivo id que queramos llenar (uno del que vende y otro del que compra cuando encuentra el id llena los campos necesarios de venta , quantity para restar al stock y demas campos necesarios)*/
 
-
-// arr.push(buy)
-
-// createObject()
-
-// },[elem])
 
 const handleSubmit = (e)=>{
   e.preventDefault()
-  createObject([elementos])
-  if(stock!=null){
+  if(arr!=null){
     //mutationsell(stock)
     //mutationbuy(stock)
 
@@ -48,58 +65,54 @@ const handleSubmit = (e)=>{
   }
 
 }
-
+let arr = []
 
 let showCarrito =(item)=>(
+
   setPrice(item.price + price),
-  item.variant=== fruit?
+  item.type=== fruit?
+
     <div>
       <img src={item.photo}></img>
       <h1>Product:{item.product}</h1>
-      <p>Variant: {item.variant}</p>
+      <p>type: {item.type}</p>
       <p>Current State: {item.state}</p>
       <p>Current stock: {item.stock}</p>
+      <input type='Number' minLength={1} maxLength={item.stock} onChange={()=>setCounter({id : item.product._id, counter :target.value})}></input>
+      <p>Price : {item.price *= item.quantity}</p>
     <button value={item.id}  onClick={()=>{setRemove(item.id)}}>X</button>
+    {arr.push({
+     idBuy : idUser,
+     idSell : item.product.user._id,
+     idProduct :item.product._id,
+     price : item.price,
+     quantity:item.quantity,
+     type:item.type,
+    })}
     </div>
   :
   <div>
   <img src={item.photo}></img>
   <h1>Product:{item.product}</h1>
-  <p>Variant: {item.variant}</p>
+  <p>type: {item.type}</p>
   <p>Current State: {item.state}</p>
+  <p>Current stock: {item.stock}</p>
+  <input type='Number' minLength={1} maxLength={item.stock} onChange={()=>setCounter({id : item.product._id, counter :target.value}) }></input>
+  <p>Price : {item.price *= item.quantity}</p>
   <button value={item.id}  onClick={()=>{setRemove(item.id)}}>X</button>
+  {arr.push({
+    idBuy : idUser,
+    idSell : item.product.user._id,
+    idProduct :item.product._id,
+    price : item.price,
+    quantity:item.quantity,
+    type:item.type,
+   })}
 </div>
 
   
 )
-const createObject = (e,remove)=>{
-  let arr =[]
-if(e === Array){
-  e.map((e)=>{
-    let obj ={
-      idcomprador:e.id,
-      idvendedor:'',
-      idproducto:'',
-      price:'',
-      stock:'',
-    }
-    arr.push(obj)
-  })
 
-
-}else{
-  let obj ={
-    idcomprador:e.id,
-    idvendedor:'',
-    idproducto:'',
-    price:'',
-    stock:'',
-  }
-  arr.push(obj)
-
-  }
-    setStock(arr)
-  }
   
   return (
     <div>

@@ -1,30 +1,28 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2'
 import { useCreateItineraryMutation } from '../../features/citiesAPI';
-export default function ModalCreate({ children, onClose }) {
+export default function ModalCreate({onClose }) {
 
   const [createItinerary] = useCreateItineraryMutation()
-  const userSession = JSON.parse(localStorage.getItem('user'))
+  const getUser = useSelector(state => state.auth.user)
   const [photo, setPhoto] = useState()
   const [duration, setDuration] = useState()
   const [price, setPrice] = useState()
-  const [tags, setTags] = useState()
+  const [type, setType] = useState()
   const [name, setName] = useState()
   const [edit, setEdit] = useState()
-  const [likes, setLikes] = useState(0)
+  const [stock, setStock] = useState(0)
+
+
+  const current = new Date()
+  const dayMonth = `${current.getDate()}/${current.getMonth()}/${current.getFullYear}`
 
 
   const handlePhoto = (e) => {
     setPhoto(e.target.value)
   }
 
-  const handleDuration = (e) => {
-    setDuration(e.target.value)
-
-  }
-  const handleTags = (e) => {
-    setTags(e.target.value)
-  }
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -39,18 +37,18 @@ export default function ModalCreate({ children, onClose }) {
 
   useEffect(() => {
     let objCreate = {
-      user: children.idUser,
-      name: name,
-      likes: likes,
+      user: getUser,
       photo: photo,
+      name: name,
+      stock: stock,
       price: price,
-      tags: tags,
-      duration: duration
+      type: type,
+      date: dayMonth
     }
 
     setEdit(objCreate)
 
-  }, [photo, price, tags, name, duration])
+  }, [photo, price, tags, name, stock])
 
 
 
@@ -89,25 +87,28 @@ export default function ModalCreate({ children, onClose }) {
 
   return (
     <div className='createItiner'>
-      <h3 className="createH3">Create your New Itinerary </h3>
-      <p >Name  </p>
+      <h3 className="createH3">Create your New Product </h3>
+      <p >Name Of Product </p>
       <input type='text' onChange={handleName}></input>
 
 
       <h4 className="createH4">User :   {userSession.name} </h4>
 
 
-      <p >City   {children.city} </p>
-
       <p >Image  </p>
-      <input type='text' onChange={handlePhoto}></input>
+      <input type='file' onChange={handlePhoto}></input>
       <p >Price </p>
       <input type='Number' onChange={handlePrice}></input>
 
-      <p >Tags  </p>
+      <p >stock  </p>
       <input type='Number' onChange={handleTags}></input>
-      <p >Duration</p>
-      <input type='Number' onChange={handleDuration}></input>
+      <p >Type</p>
+      <select onChange={setType(option.target.value)}>
+        <option value='Fruit'>Fruit</option>
+        <option value='Vegetable'>Vegetable</option>
+        <option value='Other'>Other</option>
+      </select>
+      <p>Date : {dayMonth}</p>
       <div className='createButtons'>
 
         <button onClick={handleSubmit} className='save'>Save</button>
