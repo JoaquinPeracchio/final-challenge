@@ -1,0 +1,9 @@
+.carousel-container{
+    background-color: wheat;
+    display: flex;
+    justify-content: center;
+}
+.imgCarousel{
+    height: 250px;
+    width: 286px;
+}

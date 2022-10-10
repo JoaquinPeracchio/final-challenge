@@ -1,0 +1,18 @@
+.botonScrollTop{
+    position: absolute;
+    left: 85%;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.botonScrollTop:hover{
+    border-radius: 360px;
+    background-color: wheat
+}
+
+.backTopImage{
+    height: 40px;
+    width: 40px;
+}
+
+
