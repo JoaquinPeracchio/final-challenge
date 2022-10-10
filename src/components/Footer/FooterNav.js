@@ -1,6 +1,8 @@
 import { Link as LinkRouter } from "react-router-dom"
 import "./FooterNav.css"
 import React from 'react'
+import Button from "react-bootstrap/esm/Button"
+import './FooterNav.css'
 
 
 
@@ -8,9 +10,7 @@ const FooterNav = () => {
 
   const navegacion = [
     { name: "Home", to: "/", alt: "homeFooter" },
-    { name: "Cities", to: "/cities", alt: "citiesFooter" },
-    { name: "New City", to: "/newcity", alt: "newCityFooter" },
-    { name: "Edit City", to: "/edit-city", alt: "editCityFooter" }
+    { name: "Products", to: "/products" }
   ]
 
   function  linkNav(item){
@@ -23,7 +23,13 @@ const FooterNav = () => {
 
   return (
     <>
-    <p>Links a paginas</p>
+    <div>
+      {navegacion.map((obj) => 
+      <LinkRouter className="links" to={obj.to}>
+        <button type="" className="button-navfooter">{obj.name}</button>
+        </LinkRouter>
+      )}
+    </div>
     </>
 
   )
