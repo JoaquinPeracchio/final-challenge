@@ -2,6 +2,8 @@
     background-color: wheat;
     display: flex;
     justify-content: center;
+    min-height: 51.5vh;
+    align-items: center;
 }
 .imgCarousel{
     height: 250px;
