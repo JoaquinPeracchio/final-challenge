@@ -6,12 +6,17 @@ export default function ModalCreate({ children, onClose }) {
   const [createItinerary] = useCreateItineraryMutation()
   const userSession = JSON.parse(localStorage.getItem('user'))
   const [photo, setPhoto] = useState()
-  const [duration, setDuration] = useState()
   const [price, setPrice] = useState()
   const [tags, setTags] = useState()
   const [name, setName] = useState()
   const [edit, setEdit] = useState()
-  const [likes, setLikes] = useState(0)
+
+  const [stock, setStock] = useState(0)
+  const [quantity,setQuantity]=useState()
+  const [variety,setVariety]=useState()
+
+  const current = new Date()
+  const dayMonth = `${current.getDate()}/${current.getMonth()}/${current.getFullYear}`
 
 
   const handlePhoto = (e) => {
@@ -41,11 +46,16 @@ export default function ModalCreate({ children, onClose }) {
     let objCreate = {
       user: children.idUser,
       name: name,
-      likes: likes,
-      photo: photo,
+
+      variety : variety,
+      stock: stock,
       price: price,
-      tags: tags,
-      duration: duration
+      type: type,
+      quantity :quantity,
+      date: dayMonth
+
+
+
     }
 
     setEdit(objCreate)
@@ -89,9 +99,13 @@ export default function ModalCreate({ children, onClose }) {
 
   return (
     <div className='createItiner'>
-      <h3 className="createH3">Create your New Itinerary </h3>
-      <p >Name  </p>
+
+      <h3 className="createH3">Create your New Product </h3>
+      <p >Name Of Publication </p>
+
       <input type='text' onChange={handleName}></input>
+      <p >Name Of Product </p>
+      <input type='text' onChange={e =>setVariety(e.target.value)}></input>
 
 
       <h4 className="createH4">User :   {userSession.name} </h4>
@@ -104,10 +118,19 @@ export default function ModalCreate({ children, onClose }) {
       <p >Price </p>
       <input type='Number' onChange={handlePrice}></input>
 
-      <p >Tags  </p>
-      <input type='Number' onChange={handleTags}></input>
-      <p >Duration</p>
-      <input type='Number' onChange={handleDuration}></input>
+
+      <p >stock  </p>
+      <input type='Number' onChange={e => setStock(e.target.value)} ></input>
+      <p >quantity for kg  </p>
+      <input type='Number' onChange={e => setQuantity(e.target.value)} ></input>
+      <p >Type</p>
+      <select onChange={setType(option.target.value)}>
+        <option value='Fruit'>Fruit</option>
+        <option value='Vegetable'>Vegetable</option>
+        <option value='Other'>Other</option>
+      </select>
+      <p>Date : {dayMonth}</p>
+
       <div className='createButtons'>
 
         <button onClick={handleSubmit} className='save'>Save</button>
