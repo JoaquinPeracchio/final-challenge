@@ -1,20 +1,25 @@
-.producs-container{
+.producs-container {
     justify-content: space-evenly;
-    min-height: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 54.1vh;
     min-width: 100%;
     display: flex;
     flex-wrap: wrap;
 }
-.card-product{
+
+.card-product {
     margin: 10px;
     height: 350px;
     min-width: 288px;
 }
-.welcome-container{
+
+.welcome-container {
     background-color: wheat;
     height: 100%;
 }
-.product-filter{
+
+.product-filter {
     margin-top: 10px;
 }
 .button-card{
@@ -22,4 +27,52 @@
     border: 1px solid black;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+.button-back {
+    padding-bottom: 1rem;
+}
+.header-btn {
+    width: 20%;
+    color: white;
+    text-align: center;
+    border: none;
+    background-color: #571002;
+    transition: ease-out 0.2s;
+    padding: 8px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.header-btn:hover {
+    color: white;
+    background-color: #6b12008a;
+    transition: ease-in 0.2s;
+    cursor: pointer;
+}
+
+.header-btn:active {
+    background-color: #8f1800b2;
+}
+
+.button-backhome {
+    width: 20%;
+    color: white;
+    text-align: center;
+    border: none;
+    background-color: #571002;
+    transition: ease-out 0.2s;
+    padding: 8px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.button-backhome:hover {
+    background-color: #6b12008a;
+    transition: ease-in 0.2s;
+    cursor: pointer;
+}
+
+.button-backhome:active {
+    background-color: #8f1800b2;
 }

@@ -9,6 +9,28 @@
         color: black;
     }
 
+    .button-navfooter {
+        color: white;
+        text-align: center;
+        border: none;
+        margin-left: 1rem;
+        background-color: #571002;
+        transition: ease-out 0.2s;
+        padding: 8px;
+        font-weight: bold;
+        border-radius: 6px;
+    }
+    
+    .button-navfooter:hover {
+        background-color: #6b12008a;
+        transition: ease-in 0.2s;
+        cursor: pointer;
+    }
+    
+    .button-navfooter:active {
+        background-color: #8f1800b2;
+    }
+
     @media(max-width: 425px){
         .footer-links-nav{
             width: 58vh;
