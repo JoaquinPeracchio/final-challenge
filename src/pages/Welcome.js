@@ -8,8 +8,7 @@ export default function Welcome() {
   return (
     <div className='welcome-container'>
       <div>
-        <Hero></Hero>
-        <CarouselBootstrap />
+        <Hero />
       </div>
       <Productos />
     </div>
