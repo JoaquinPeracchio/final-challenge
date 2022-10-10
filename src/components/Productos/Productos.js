@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
+import Details from '../Details/Details';
 import './Productos.css'
 
 export const Productos = () => {
+    const [state,setState]=useState(false)
+    const [product , setProduct]=useState({})
 
     const productos = [
         {
@@ -42,22 +45,34 @@ export const Productos = () => {
         },
     ]
 
+    const handleClose =()=>{
+        setState(false)
+    }
+
+    const showDetails =(e)=>{
+        setProduct(e)
+        setState(true)
+    }
+
     const cardBootstrap = (items) =>
         <Card key={items.alt} className="card-product" style={{ width: '18rem' }}>
+            <button style={{border:'none' , cursor:'pointer'}} onClick={()=>showDetails({image:items.img,title:items.title,description:items.description})}>
             <Card.Img className="imgCarousel" src={items.img} />
+             </button>
             <Card.Body>
                 <Card.Title>{items.title}</Card.Title>
                 <Card.Text>
                     {items.description}
                 </Card.Text>
             </Card.Body>
+            <button style={{border:'none', cursor:'pointer'}}>Add carrito</button>
         </Card>
 
     return (
         <div>
             <input className="product-filter" type="text" placeholder="Search product"></input>
             <div className="producs-container">
-                {productos.map(cardBootstrap)}
+                {!state?productos.map(cardBootstrap):<Details props={product} onclose={handleClose}/>}
             </div>
         </div>
     )
