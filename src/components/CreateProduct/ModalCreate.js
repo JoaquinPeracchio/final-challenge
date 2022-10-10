@@ -7,13 +7,13 @@ export default function ModalCreate({onClose }) {
   const [createItinerary] = useCreateItineraryMutation()
   const getUser = useSelector(state => state.auth.user)
   const [photo, setPhoto] = useState()
-  const [duration, setDuration] = useState()
   const [price, setPrice] = useState()
   const [type, setType] = useState()
   const [name, setName] = useState()
   const [edit, setEdit] = useState()
   const [stock, setStock] = useState(0)
-
+  const [quantity,setQuantity]=useState()
+  const [variety,setVariety]=useState()
 
   const current = new Date()
   const dayMonth = `${current.getDate()}/${current.getMonth()}/${current.getFullYear}`
@@ -40,9 +40,11 @@ export default function ModalCreate({onClose }) {
       user: getUser,
       photo: photo,
       name: name,
+      variety : variety,
       stock: stock,
       price: price,
       type: type,
+      quantity :quantity,
       date: dayMonth
     }
 
@@ -88,8 +90,10 @@ export default function ModalCreate({onClose }) {
   return (
     <div className='createItiner'>
       <h3 className="createH3">Create your New Product </h3>
-      <p >Name Of Product </p>
+      <p >Name Of Publication </p>
       <input type='text' onChange={handleName}></input>
+      <p >Name Of Product </p>
+      <input type='text' onChange={e =>setVariety(e.target.value)}></input>
 
 
       <h4 className="createH4">User :   {userSession.name} </h4>
@@ -101,7 +105,9 @@ export default function ModalCreate({onClose }) {
       <input type='Number' onChange={handlePrice}></input>
 
       <p >stock  </p>
-      <input type='Number' onChange={handleTags}></input>
+      <input type='Number' onChange={e => setStock(e.target.value)} ></input>
+      <p >quantity for kg  </p>
+      <input type='Number' onChange={e => setQuantity(e.target.value)} ></input>
       <p >Type</p>
       <select onChange={setType(option.target.value)}>
         <option value='Fruit'>Fruit</option>
