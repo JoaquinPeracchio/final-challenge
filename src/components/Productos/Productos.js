@@ -48,9 +48,10 @@ export const Productos = () => {
             <Card.Img className="imgCarousel" src={items.img} />
             <Card.Body>
                 <Card.Title>{items.title}</Card.Title>
-                <Card.Text>
-                    {items.description}
-                </Card.Text>
+                <div>
+                    <button className='button-card'>Details</button>
+                    <button className='button-card'>Add to cart</button>
+                </div>
             </Card.Body>
         </Card>
 
