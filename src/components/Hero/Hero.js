@@ -1,12 +1,39 @@
 import React from 'react'
-import {Link as LinkRouter} from 'react-router-dom'
+import Carousel from 'react-bootstrap/Carousel'
+import image1 from "../../assets/slides/1.jpg"
+import image2 from "../../assets/slides/2.jpg"
+import "./Hero.css"
+import { Link as LinkRouter } from 'react-router-dom'
 
 export default function Hero() {
   return (
-    <header className="header" Style="">
-      <img className='logo' src="" alt="MyTinerary logo" />
-      <h1 className='hero-title'>MyTinerary</h1>
-      <LinkRouter to="/home" className="header-btn">ENTER</LinkRouter>
-    </header>
-  );
+    <Carousel fade className="CarouselContainer">
+      <Carousel.Item>
+        <div className="CarouselImageContainer">
+          <img className="CarouselImage" src={image1} alt="First slide" />
+        </div>
+        <Carousel.Caption>
+          <div className='CarouselInfo' >
+            <h3 className='CarouselSubTitle' >Subtitle product</h3>
+            <h2 className='CarouselTitle' >Product title or advertisement</h2>
+            <p className='CarouselText' >15% discount on shipping this week</p>
+            <button className='CarouselButton'>Go to Shop</button>
+          </div>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <div className="CarouselImageContainer">
+          <img className="CarouselImage" src={image2} alt="First slide" />
+        </div>
+        <Carousel.Caption>
+          <div className='CarouselInfo' >
+            <h3 className='CarouselSubTitle' >Subtitle product</h3>
+            <h2 className='CarouselTitle' >Product title or advertisement</h2>
+            <p className='CarouselText' >15% discount on shipping this week</p>
+            <button className='CarouselButton'>Go to Shop</button>
+          </div>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+  )
 }
