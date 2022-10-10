@@ -1,0 +1,22 @@
+.carrito-button {
+    width: 50px !important;
+    margin-top: 50px;
+    position: absolute;
+    left: 92%;
+}
+
+.carrito-button:hover {
+    border-radius: 360px;
+    background-color: wheat
+}
+
+.carrito-elements {
+    background-color: red;
+    width: 27px !important;
+    height: 27px;
+    margin-top: 50px;
+    position: absolute;
+    left: 95%;
+    border-radius: 360px;
+    border: 1px solid black;
+}
