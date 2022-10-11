@@ -4,15 +4,16 @@ header{
     justify-content: space-between;
     height: 10vh;
     align-items: center;
-    padding: 1.5rem 2rem;
+    padding: 24px 32px;
     z-index: 2;
     width: 100%;
 }
 .HeaderIcon{
-    width: 7vmin;
+    width: 28px;
+    height: 28px;
 }
 .HeaderLogo{
-    height: 11vmin;
+    height: 40px;
 }
 .HeaderCartContainer{
     display: flex;
@@ -20,9 +21,9 @@ header{
     align-items: center;
 }
 .HeaderCartShop{
-    position: absolute;
-    top: 3vmin;
-    right: 5vmin;
+    /* position: absolute; */
+    top: 2%;
+    right: 2%;
     background-color: #86ba09;
     height: 18px;
     width: 18px;
@@ -32,8 +33,8 @@ header{
     font-weight: 600;
 }
 .HeaderNavIcon{
-    width: 7vmin;
-    height: 5.5vmin;
+    width: 26px;
+    height: 24px;
     transform: rotate(0deg);
     transition: .8s ease-in-out;
     cursor: pointer;
@@ -53,10 +54,10 @@ header{
     transition: .5s ease-in-out;
 }
 .HeaderNavIcon span:nth-child(1) {
-    top: 0;
+    top: 2px;
 }
 .HeaderNavIcon span:nth-child(4) {
-    bottom: 0;
+    bottom: 2px;
 }
 .HeaderNavIcon.open span:nth-child(1) {
     width: 0%;
@@ -104,11 +105,39 @@ header{
     border-bottom: 3px solid #85ba0939;
 }
 .HeaderNavIconUser{
-    width: 12vmin;
+    width: 28px;
     margin: 10px;
 }
 li{
     list-style: none
+}
+.HeaderIconButton{
+    display: none;
+}
+
+@media(min-width: 768px){
+    .HeaderNavIconUser{
+        width: 50px;
+        margin: 10px;
+    }
+}
+@media(min-width: 1024px){
+    .HeaderNavIcon{
+        display: none;
+    }
+    .HeaderIconButton{
+        display: block;
+    }
+    .HeaderIconsContainer{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 160px;
+    }
+    .HeaderIcon{
+        width: 20px;
+        height: 20px;
+    }
 }
 
 /*
