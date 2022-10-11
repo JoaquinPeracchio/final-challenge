@@ -46,7 +46,7 @@ export default function Header() {
         <LinkRouter to="/products" key="products">
           <img className='HeaderIcon HeaderIconButton' src={Market} />
         </LinkRouter>
-        <LinkRouter to="/products" key="products">
+        <LinkRouter to="/user" key="user">
           <img className='HeaderIcon HeaderIconButton' src={User} />
         </LinkRouter>
         <div className="HeaderCartContainer" onClick={toggleCart}>
