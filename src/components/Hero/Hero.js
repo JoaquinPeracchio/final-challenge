@@ -17,7 +17,9 @@ export default function Hero() {
             <h3 className='CarouselSubTitle' >Subtitle product</h3>
             <h2 className='CarouselTitle' >Product title or advertisement</h2>
             <p className='CarouselText' >15% discount on shipping this week</p>
-            <button className='CarouselButton'>Go to Shop</button>
+            <LinkRouter to="/products">
+              <button className='CarouselButton'>Go to Shop</button>
+            </LinkRouter>
           </div>
         </Carousel.Caption>
       </Carousel.Item>
@@ -30,7 +32,9 @@ export default function Hero() {
             <h3 className='CarouselSubTitle' >Subtitle product</h3>
             <h2 className='CarouselTitle' >Product title or advertisement</h2>
             <p className='CarouselText' >15% discount on shipping this week</p>
-            <button className='CarouselButton'>Go to Shop</button>
+            <LinkRouter to="/products">
+              <button className='CarouselButton'>Go to Shop</button>
+            </LinkRouter>
           </div>
         </Carousel.Caption>
       </Carousel.Item>

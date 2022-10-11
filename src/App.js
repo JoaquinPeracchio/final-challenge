@@ -3,7 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from './Layouts/Layout';
 import Welcome from './pages/Welcome';
 import ShowComments from './components/Comments/ShowComments';
-import Carrito from './components/Carrito/Carrito'
+import ProductsPage from './pages/ProductsPage'
+import Profile from './pages/Profile';
+import User from './pages/User'
 
 function App() {
 
@@ -13,8 +15,12 @@ function App() {
         <Layout>
           <Routes>
             <Route path='/' element={<Welcome />} />
-            {/* <Route path='/comments' element={<ShowComments />} />
-            <Route path='/carrito' element={<Carrito />} /> */}
+            <Route path='/products' element={<ProductsPage />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/user' element={<User />} />
+            <Route path='/signup' />
+            <Route path='/signin' />
+            {/* <Route path='/comments' element={<ShowComments />} /> */}
           </Routes>
         </Layout>
       </BrowserRouter>
