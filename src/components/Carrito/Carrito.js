@@ -1,45 +1,33 @@
 import React, { useEffect, useState } from 'react'
-
-export default function Carrito({props,onclose}) {
-let elementos = [props]
-const [price,setPrice]=useState()
-const [remover,setRemove]=useState()
-const [stock,setStock]=useState([])
-const [show,setShow]=useState(false)
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { DeleteProduct } from '../../features/slices/carritoSlice'
+export default function Carrito({onclose}) {
 
 
- useEffect(()=>{
- let  removeElem = elementos.filter(e => e.id === remover)
-  elementos.pop(removeElem)
+const [price,setPrice]=useState(0)
 
 
- },[remover])
+
+const currentCarrito = useSelector(state => state.carrito)
+const sendInfo = useDispatch()
+
 
 
 const saveElement =()=>{
-  localStorage.setItem('carrito',JSON.stringify(elementos))
+  localStorage.setItem('carrito',JSON.stringify(currentCarrito))
 }
 
 const clearElement = ()=>{
-  setShow(false)
-  
-  stock === null
+
 }
 
-// useEffect(()=>{
-//   /*debo crear dos arrays de objetos, con el mismo objeto por duplicado , cada uno tendra su propio controllador llamado buy y sell estos controladores van a recorrer el array con for y van a buscar coincidencias con el respectivo id que queramos llenar (uno del que vende y otro del que compra cuando encuentra el id llena los campos necesarios de venta , quantity para restar al stock y demas campos necesarios)*/
 
-
-// arr.push(buy)
-
-// createObject()
-
-// },[elem])
 
 const handleSubmit = (e)=>{
   e.preventDefault()
-  createObject([elementos])
-  if(stock!=null){
+
+  if(currentCarrito.length != null){
     //mutationsell(stock)
     //mutationbuy(stock)
 
@@ -48,18 +36,30 @@ const handleSubmit = (e)=>{
   }
 
 }
+const removeElem =(e)=>{
+  sendInfo(DeleteProduct(e))
+}
+/*data del modelo product{
+  foto
+  product
+  type
+  cantidad seteada por kg
+  la cantidad de esa cantaidad que va a llevar 
+  stock
+  state (bueno muy bueno malo muy malo)
+  */
 
 
 let showCarrito =(item)=>(
-  setPrice(item.price + price),
+  setPrice(price + item.price),
   item.variant=== fruit?
     <div>
-      <img src={item.photo}></img>
-      <h1>Product:{item.product}</h1>
-      <p>Variant: {item.variant}</p>
-      <p>Current State: {item.state}</p>
-      <p>Current stock: {item.stock}</p>
-    <button value={item.id}  onClick={()=>{setRemove(item.id)}}>X</button>
+      <img src={item.image}></img>
+      <h1>Product:{item.title}</h1>
+      <p>Variant: {item.description}</p>
+      {/* price : item.price */}
+      {/* cantidad id=item.id onclick(()=>handleCantidad({cantidad :e.target.value,id:e.target.id})) : item.price */}
+    <button value={item.id}  onClick={e=>removeElem(e.target.value)}>X</button>
     </div>
   :
   <div>
@@ -67,44 +67,17 @@ let showCarrito =(item)=>(
   <h1>Product:{item.product}</h1>
   <p>Variant: {item.variant}</p>
   <p>Current State: {item.state}</p>
-  <button value={item.id}  onClick={()=>{setRemove(item.id)}}>X</button>
+  <button value={item.id}  onClick={e=>removeElem(e.target.value)}>X</button>
 </div>
 
   
 )
-const createObject = (e,remove)=>{
-  let arr =[]
-if(e === Array){
-  e.map((e)=>{
-    let obj ={
-      idcomprador:e.id,
-      idvendedor:'',
-      idproducto:'',
-      price:'',
-      stock:'',
-    }
-    arr.push(obj)
-  })
 
-
-}else{
-  let obj ={
-    idcomprador:e.id,
-    idvendedor:'',
-    idproducto:'',
-    price:'',
-    stock:'',
-  }
-  arr.push(obj)
-
-  }
-    setStock(arr)
-  }
   
   return (
     <div>
       <button onClick={onclose}></button>
-      {show?elementos?elementos.map(e => showCarrito(e) ):'':''}
+      {show?currentCarrito?currentCarrito.map(e => showCarrito(e) ):'':''}
       <h3>Total de Compra: {price}</h3>
       <button onClick={saveElement}>save</button>
       <button onClick={clearElement}>Clear</button>

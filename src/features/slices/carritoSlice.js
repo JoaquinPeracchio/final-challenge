@@ -16,11 +16,20 @@ export const carritoSlice = createSlice({
          const remove =   state.find(item => item.id === action.payload.id)
          state.pop(remove)
 
+        },
+        UpdateCarrito : (state,action)=>{
+            const update = state.find(item => item.id ===action.payload.id)
+            update.quantity = action.payload.quantity
+            update.price = update.price * action.payload.quantity
+        },
+        ClearCarrito : (state) =>{
+            [...state] === []
         }
+
     }
 })
 
-export const { AddCarrito} = carritoSlice.actions
+export const { AddCarrito,DeleteProduct} = carritoSlice.actions
 export default carritoSlice.reducer
 
 
