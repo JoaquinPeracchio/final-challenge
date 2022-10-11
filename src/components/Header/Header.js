@@ -13,7 +13,6 @@ export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const [openCart, setOpenCart] = useState(false);
 
-
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
     console.log(openMenu)
@@ -41,9 +40,15 @@ export default function Header() {
       </div>
       <img src={Logo} className='HeaderLogo' />
       <div className="HeaderIconsContainer">
-        <img className='HeaderIcon HeaderIconButton' src={Home} />
-        <img className='HeaderIcon HeaderIconButton' src={Market} />
-        <img className='HeaderIcon HeaderIconButton' src={User} />
+        <LinkRouter to="/" key="home">
+          <img className='HeaderIcon HeaderIconButton' src={Home} />
+        </LinkRouter>
+        <LinkRouter to="/products" key="products">
+          <img className='HeaderIcon HeaderIconButton' src={Market} />
+        </LinkRouter>
+        <LinkRouter to="/products" key="products">
+          <img className='HeaderIcon HeaderIconButton' src={User} />
+        </LinkRouter>
         <div className="HeaderCartContainer" onClick={toggleCart}>
           <img src={Cart} className='HeaderIcon' />
           <p className="HeaderCartShop">3</p>
