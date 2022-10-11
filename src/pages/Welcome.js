@@ -6,8 +6,7 @@ import '../components/Productos/Productos.css'
 export default function Welcome() {
   return (
     <div className='welcome-container'>
-        <Hero></Hero>
-        <CarouselBootstrap />
+      <Hero />
     </div>
   )
 }

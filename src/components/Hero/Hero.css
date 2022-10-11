@@ -1,0 +1,88 @@
+.CarouselImage{
+    object-fit: cover;
+    height: 90vmin;
+    width: 100%;
+}
+.CarouselInfo{
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.CarouselSubTitle{
+    position: relative;
+    color: white;
+    font-weight: 400;
+    font-size: 4.2vmin;
+    padding: 8px 12px;
+    background-color: #86ba09;
+    animation-name: CarouselSubTitle;
+    animation-duration: 1.5s;
+}
+.CarouselTitle{
+    position: relative;
+    font-size: 6vmin;
+    color: #FFF;
+    font-weight: 700;
+    width: 50%;
+    text-align: left;
+    animation-name: CarouselTitle;
+    animation-duration: 1s;
+}
+.CarouselText{
+    font-size: 4.4vw;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: none;
+    text-align: left;
+    animation-name: CarouselTitle;
+    animation-duration: 3s;
+    position: relative;
+}
+.CarouselButton{
+    min-width: 2vw;
+    height: 8.5vw;
+    font-size: 3.6vw;
+    padding: 0 26px;
+    font-weight: 700;
+    background-color: #86ba09;
+    color: #ffffff;
+    border-radius: 15px;
+    border: none;
+    position: relative;
+    animation-name: CarouselSubTitle;
+    animation-duration: 3s;
+}
+.CarouselButton:hover{
+    background-color: #ffffff;
+    color: #86ba09;
+}
+
+@keyframes CarouselTitle {
+    0%   {right: -100vw; opacity: 0;}
+    100% {right: 0px; }
+}
+@keyframes CarouselSubTitle {
+    0%   {left: -60vw; opacity: 0;}
+    100% {left:0px;background-color: #86ba09;}
+}
+
+@media(min-width: 768px){
+    .CarouselSubTitle{
+        font-size: 3vh;
+    }
+    .CarouselTitle{
+        font-size: 6vh;
+    }
+    .CarouselText{
+        font-size: 4.4vh;
+    }
+    .CarouselButton{
+        height: 7vh;
+        font-size: 3vh;
+    }
+
+}

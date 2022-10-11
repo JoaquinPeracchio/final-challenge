@@ -1,0 +1,198 @@
+header{
+    display: flex;
+    background-color:#ffffff;
+    justify-content: space-between;
+    height: 10vh;
+    align-items: center;
+    padding: 24px 32px;
+    z-index: 2;
+    width: 100%;
+}
+.HeaderIcon{
+    width: 28px;
+    height: 28px;
+}
+.HeaderLogo{
+    height: 40px;
+}
+.HeaderCartContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.HeaderCartShop{
+    /* position: absolute; */
+    top: 2%;
+    right: 2%;
+    background-color: #86ba09;
+    height: 18px;
+    width: 18px;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+}
+.HeaderNavIcon{
+    width: 26px;
+    height: 24px;
+    transform: rotate(0deg);
+    transition: .8s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.HeaderNavIcon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #000000;
+    border-radius: 9px;
+    opacity: 1;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
+}
+.HeaderNavIcon span:nth-child(1) {
+    top: 2px;
+}
+.HeaderNavIcon span:nth-child(4) {
+    bottom: 2px;
+}
+.HeaderNavIcon.open span:nth-child(1) {
+    width: 0%;
+}
+.HeaderNavIcon.open span:nth-child(2) {
+    transform: rotate(45deg);
+}
+.HeaderNavIcon.open span:nth-child(3) {
+    transform: rotate(-45deg);
+}
+.HeaderNavIcon.open span:nth-child(4) {
+    width: 0%;
+}
+.HeaderNavContainer{
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    position:fixed;
+    top: 10vh;
+    right:100%;
+    display: flex;
+    transition: right .6s;
+}
+.HeaderNavActive{
+    transition: right 1s;
+    right:0;
+}
+.HeaderNavBackgound{
+    width: 30vmin;
+    height: 100%;
+}
+.HeaderNav{
+    border-top: 3px solid #85ba0939;
+    width: 70%;
+    background-color: #ffffff;
+    height: 100%;
+    z-index: 99;
+}
+.HeaderNavLinksContainer{
+    background-color: #85ba0939;
+    width: 100%;
+    padding: 0;
+}
+.HeaderNavLinkUser{
+    border-bottom: 3px solid #85ba0939;
+}
+.HeaderNavIconUser{
+    width: 28px;
+    margin: 10px;
+}
+li{
+    list-style: none
+}
+.HeaderIconButton{
+    display: none;
+}
+
+@media(min-width: 768px){
+    .HeaderNavIconUser{
+        width: 50px;
+        margin: 10px;
+    }
+}
+@media(min-width: 1024px){
+    .HeaderNavIcon{
+        display: none;
+    }
+    .HeaderIconButton{
+        display: block;
+    }
+    .HeaderIconsContainer{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 160px;
+    }
+    .HeaderIcon{
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/*
+@media screen and (max-width:782px){
+    header{
+        padding: 1.5rem 2.5rem;
+    }
+    .Header-nav{
+        position:fixed;
+        top: 118px;
+        left:100%;
+        background-color: #fe938c;
+        height: 100%;
+        transition: left 0.3s;
+    }
+    .Header-NavMenuButton{
+        display: block;
+    }
+    .Header-LinksContainer{
+        flex-direction: column;
+        gap: 2rem;
+        position: relative;
+        top:30px;
+        transition: left 0.3s;
+    }
+    .Header-Backgound{
+        display: block;
+        position: absolute;
+        overflow: hidden;
+        left: 100%;
+        width: 100vh;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    .isActive{
+        left:0px;
+    }
+
+    .HeaderisActive{
+        position: sticky;
+        top: 0;
+    }
+    .Header-menu{
+        position: absolute;
+        background-color: #fe948c;
+        top: 118px;
+        right: 0;
+    }
+    .Header-logo{
+        height: 4.5rem;
+    }
+    
+    .Header-login,
+    .Header-NavCloseIcon,
+    .Header-NavMenuIcon{
+        height: 2.5rem;
+    }
+} */
