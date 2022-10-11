@@ -6,10 +6,7 @@ import '../components/Productos/Productos.css'
 export default function Welcome() {
   return (
     <div className='welcome-container'>
-      <div>
-        <Hero />
-      </div>
-      <Productos />
+      <Hero />
     </div>
   )
 }
