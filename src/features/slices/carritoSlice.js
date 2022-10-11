@@ -9,8 +9,14 @@ export const carritoSlice = createSlice({
     name:'carrito',
     initialState,
     reducers:{
-        AddCarrito : (state,action) =>{       
-            state.push(action.payload)          
+        AddCarrito : (state,action) =>{ 
+            const repeat =   state.find(item => item.title === action.payload.title)  
+               if(repeat){
+                repeat.quantity += 1
+               }else{
+                   state.push(action.payload)          
+
+               }
         },
         DeleteProduct : (state,action) =>{
          const remove =   state.find(item => item.id === action.payload.id)
@@ -23,7 +29,7 @@ export const carritoSlice = createSlice({
             update.price = update.price * action.payload.quantity
         },
         ClearCarrito : (state) =>{
-            [...state] === []
+          
         }
 
     }
