@@ -2,18 +2,19 @@ import {
   createApi,
   fetchBaseQuery
 } from '@reduxjs/toolkit/query/react'
-import APIurl from '../APIBack'
 
 const ApiMethod = createApi({
   reducerPath: "citiesAPI",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: `${APIurl}`,
+    baseUrl: `https://localhost:3000`,
   }),
   ////////////////////////////////////////Get methods//////////////////////////////////////////////////
 
 
   endpoints: (builder) => ({
+
+    getAllProducts: builder.query({ query: (params) => `/product/${params}` }),
 
   }),
 
