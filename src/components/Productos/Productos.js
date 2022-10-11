@@ -79,7 +79,7 @@ export const Productos = () => {
                     {items.description}
                 </Card.Text>
             </Card.Body>
-            <button onClick={()=>setCarrito({image:items.img,title:items.title,description:items.description})} style={{border:'none', cursor:'pointer'}}>Add carrito</button>
+            <button onClick={()=>setCarrito({image:items.img,title:items.title,description:items.description,quantity:items.quantity})} style={{border:'none', cursor:'pointer'}}>Add carrito</button>
         </Card>
 
     return (
