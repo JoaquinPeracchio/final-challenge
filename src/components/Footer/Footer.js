@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='footer-down'>
-        <h4>© 2022 Copyright - All rights reserved | Designed by Integrantes</h4>
+      <p className="footer-names">© 2022 Copyright - All rights reserved | Designed by Joaquin Peracchio, Joaquin Alvarez, Alessandro Lautaro, Agustin Ochoa, Leonardo Medici, Lucas Cortes</p>
       </div>
     </footer>
 
