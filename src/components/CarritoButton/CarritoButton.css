@@ -11,12 +11,17 @@
 }
 
 .carrito-elements {
-    background-color: red;
-    width: 27px !important;
-    height: 27px;
-    margin-top: 50px;
+    background-color: #86ba09;
+    height: 18px;
+    width: 18px;
     position: absolute;
-    left: 95%;
+    top: 2%;
+    right: 2%;
     border-radius: 360px;
-    border: 1px solid black;
+    border: #6c9706;
+}
+.numero{
+    position: absolute;
+    top: -15%;
+    right: 25%;
 }
