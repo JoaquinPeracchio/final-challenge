@@ -8,28 +8,28 @@ import './Productos.css'
 
 
 export const Productos = () => {
-    const [state,setState]=useState(false)
-    const [product , setProduct]=useState({})
+    const [state, setState] = useState(false)
+    const [product, setProduct] = useState({})
     const sendInfo = useDispatch()
 
 
 
     const {
         data: elem,
-        refetch:comeback
+        refetch: comeback
 
     } = useGetAllProductsQuery()
-console.log(elem)
-    const handleClose =()=>{
+    console.log(elem)
+    const handleClose = () => {
         setState(false)
     }
 
-    const showDetails =(e)=>{
+    const showDetails = (e) => {
         setProduct(e)
         setState(true)
     }
 
-    const setCarrito = (e)=>{
+    const setCarrito = (e) => {
         sendInfo(AddCarrito(e))
 
     }
@@ -48,10 +48,12 @@ console.log(elem)
 
     return (
         <div>
-                {!state && elem?elem.map(cardBootstrap):''}
             <input className="product-filter" type="text" placeholder="Search product"></input>
-            <div className="producs-container">
-                 {state ?<Details props={product} onclose={handleClose}/>:''} 
+            <div className='producs-container'>
+                {!state && elem ? elem.map(cardBootstrap) : ''}
+                <div className="producs-container">
+                    {state ? <Details props={product} onclose={handleClose} /> : ''}
+                </div>
             </div>
         </div>
     )
