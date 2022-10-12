@@ -4,20 +4,20 @@ import {
 } from '@reduxjs/toolkit/query/react'
 
 const ApiMethod = createApi({
-  reducerPath: "citiesAPI",
+  reducerPath: "ApiMethod",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: `https://localhost:3000`,
+    baseUrl: `http://localhost:4000`,
   }),
   ////////////////////////////////////////Get methods//////////////////////////////////////////////////
 
 
   endpoints: (builder) => ({
 
-    getAllProducts: builder.query({ query: (params) => `/product/${params}` }),
+    GetAllProducts: builder.query({ query: () => `/products/` }),
 
   }),
 
 })
-
+export const {useGetAllProductsQuery}=ApiMethod
 export default ApiMethod
