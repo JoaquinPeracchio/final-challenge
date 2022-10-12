@@ -11,6 +11,7 @@ header{
 .HeaderIcon{
     width: 28px;
     height: 28px;
+    cursor: pointer;
 }
 .HeaderLogo{
     height: 40px;
@@ -108,11 +109,20 @@ header{
     width: 28px;
     margin: 10px;
 }
-li{
+li, ul{
     list-style: none
 }
 .HeaderIconButton{
     display: none;
+}
+.Header-menu{
+    display: none;
+}
+.UserIcon{
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
 
 @media(min-width: 768px){
@@ -132,11 +142,43 @@ li{
         display: flex;
         align-items: center;
         justify-content: space-around;
-        width: 160px;
+        width: 180px;
     }
     .HeaderIcon{
-        width: 20px;
-        height: 20px;
+        width: 28px;
+        height: 28px;
+    }
+    .HeaderIconLink{
+        width: 18px;
+        height: 18px;
+    }
+    .Header-menu{
+        display: block;
+        position: fixed;
+        background-color: white;
+        top: 10vh;
+        right: 90px;
+        z-index: 80;
+        border-radius: 8px;
+        box-shadow:2px -1px 3px #00000052, -2px -1px 3px #00000052,0px 2px 3px #00000052;
+    }
+    .Header-profileMenu{
+        padding: 0.3rem 1rem;
+        margin: .5rem;
+        font-size: 18px;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    .HeaderMenuLink{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        cursor: pointer;
+        color: #000000;
+        text-decoration: none;
+    }
+    .HeaderMenuLink:hover{
+        color: #86ba09;
     }
 }
 

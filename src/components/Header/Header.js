@@ -1,5 +1,6 @@
 import { Link as LinkRouter } from "react-router-dom";
 import { useState } from "react";
+import WebHeaderButton from "./WebHeaderButton";
 import Logo from '../../assets/provisionalLogo.png'
 import Cart from '../../assets/icons/cart.png'
 import Home from '../../assets/icons/house.png'
@@ -46,9 +47,8 @@ export default function Header() {
         <LinkRouter to="/products" key="products">
           <img className='HeaderIcon HeaderIconButton' src={Market} />
         </LinkRouter>
-        <LinkRouter to="/user" key="user">
-          <img className='HeaderIcon HeaderIconButton' src={User} />
-        </LinkRouter>
+
+        <WebHeaderButton />
         <div className="HeaderCartContainer" onClick={toggleCart}>
           <img src={Cart} className='HeaderIcon' />
           <p className="HeaderCartShop">3</p>
