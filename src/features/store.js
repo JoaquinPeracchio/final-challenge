@@ -8,6 +8,7 @@ export const store = configureStore({
   reducer: {
     [userApi.reducerPath]: userApi.reducer,
     [commentsApi.reducerPath]: commentsApi.reducer,
+     [ApiMethod.reducerPath]: ApiMethod.reducer,
     comments: commentsReducer,
     carrito: carritoSlice
   },
@@ -17,4 +18,5 @@ export const store = configureStore({
       .concat(userApi.middleware)
       .concat(commentsApi.middleware)
 })
+
 
