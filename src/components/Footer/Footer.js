@@ -4,12 +4,11 @@ import FooterNav from "./FooterNav"
 import "./Footer.css"
 import "../ScrollToTop/ScrollToTopPage"
 import ScrollToTopPage from '../ScrollToTop/ScrollToTopPage'
-import { CarritoButton } from '../CarritoButton/CarritoButton'
 
 const Footer = () => {
   return (
     <footer className='footer'>
-      <CarritoButton/>
+
       <div className='footer-hero'>
 
         <div>
