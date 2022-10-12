@@ -51,9 +51,7 @@ export const Productos = () => {
             <input className="product-filter" type="text" placeholder="Search product"></input>
             <div className='producs-container'>
                 {!state && elem ? elem.map(cardBootstrap) : ''}
-                <div className="producs-container">
-                    {state ? <Details props={product} onclose={handleClose} /> : ''}
-                </div>
+                {state ? <Details props={product} onclose={handleClose} /> : ''}
             </div>
         </div>
     )
