@@ -6,6 +6,7 @@ import ShowComments from './components/Comments/ShowComments';
 import ProductsPage from './pages/ProductsPage'
 import Profile from './pages/Profile';
 import User from './pages/User'
+import Carrito from './components/Carrito/Carrito'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path='/user' element={<User />} />
             <Route path='/signup' />
             <Route path='/signin' />
+            <Route path='/cart' element={<Carrito/>} />
             {/* <Route path='/comments' element={<ShowComments />} /> */}
           </Routes>
         </Layout>

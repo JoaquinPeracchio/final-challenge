@@ -28,8 +28,6 @@ export const CarritoButton = () => {
                 <img onClick={()=>setState(true)} src={Cart} alt='logo' className='HeaderIcon'></img>
                 {data.length > 0 ? <button className='carrito-elements'><p className='numero'>{data.length}</p></button> : null }
             </div>
-           
-            {state?<Carrito onclose={handleClose}></Carrito>:''}
         
         </div>
 

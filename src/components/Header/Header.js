@@ -3,7 +3,6 @@ import { useState } from "react";
 import { CarritoButton } from '../CarritoButton/CarritoButton'
 import WebHeaderButton from "./WebHeaderButton";
 import Logo from '../../assets/provisionalLogo.png'
-import Cart from '../../assets/icons/cart.png'
 import Home from '../../assets/icons/house.png'
 import Market from '../../assets/icons/market.png'
 import User from '../../assets/icons/user.png'
@@ -51,7 +50,9 @@ export default function Header() {
 
         <WebHeaderButton />
         <div className="HeaderCartContainer" onClick={toggleCart}>
+        <LinkRouter to="/cart" key="cart">
           <CarritoButton/>
+          </LinkRouter>
         </div>
       </div>
     </header>
