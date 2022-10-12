@@ -35,26 +35,16 @@ console.log(elem)
     }
 
     const cardBootstrap = (items) =>
-        <Card  className="card-product" style={{ width: '18rem' }}>
-            <button style={{border:'none' , cursor:'pointer'}} onClick={()=>showDetails({id:items._id,image:items.photo,name:items.name,variety:items.variety,quantitymin:items.quantitymin,price:items.price,type:items.type,description:items.description,currentState : items.currentState,quantity:1})}>
-            <Card.Img className="imgCarousel" src={items.photo} />
-             </button>
-            <Card.Body>
-            <button onClick={()=>setCarrito({id:items._id,image:items.photo,name:items.name,variety:items.variety,quantitymin:items.quantitymin,price:items.price,type:items.type,description:items.description,currentState : items.currentState,quantity:1})} style={{border:'none', cursor:'pointer'}}>Add carrito</button>
-                <Card.Title>{items.name}</Card.Title>
-                <Card.Text>
-                    {items.variety}
-                    <p>
-
-                    {items.type}
-                    </p>
-                    <p>
-                    {items.price}
-                        
-                    </p>
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <div key={items.alt} className="card-product" style={{ width: '18rem' }}>
+            <button className='btn-details' style={{ border: 'none', cursor: 'pointer' }} onClick={() => showDetails({ image: items.photo, title: items.title, description: items.description })}>
+                <Card.Img className="imgCarousel" src={items.photo} />
+            </button>
+            <div className='body-card-container'>
+                <div className='name-product'>{items.name}</div>
+                <div className='card-body'> ${items.price}.00</div>
+                <button className='add-carrito-btn' onClick={() => setCarrito({ image: items.photo, title: items.title, description: items.description, quantity: items.quantity })} style={{ border: 'none', cursor: 'pointer' }}>Add to cart</button>
+            </div>
+        </div>
 
     return (
         <div>
