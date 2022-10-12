@@ -3,57 +3,23 @@ import Card from 'react-bootstrap/Card';
 import Details from '../Details/Details';
 import { useDispatch } from 'react-redux';
 import { AddCarrito } from '../../features/slices/carritoSlice';
+import { useGetAllProductsQuery } from '../../features/actions/ApiMethod';
 import './Productos.css'
+
 
 export const Productos = () => {
     const [state,setState]=useState(false)
     const [product , setProduct]=useState({})
     const sendInfo = useDispatch()
 
-    const productos = [
-        {
-            img: 'https://www.zilliondesigns.com/blog/wp-content/uploads/Cat-logos.png',
-            title: 'titulo1',
-            description: 'description1',
-            quantity:1,
-            alt: 'producto1'
-        },
-        {
-            img: 'https://static.vecteezy.com/system/resources/previews/006/862/726/original/icon-of-a-cat-animal-logo-with-an-adorable-pose-free-vector.jpg',
-            title: 'titulo2',
-            description: 'description2',
-            quantity:1,
-            alt: 'producto2'
-        },
-        {
-            img: 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/38685/image-upload/CatLogoDesign003.jpg',
-            title: 'titulo3',
-            description: 'description3',
-            quantity:1,
-            alt: 'producto3'
-        }, {
-            img: 'https://www.zilliondesigns.com/blog/wp-content/uploads/Cat-logos.png',
-            title: 'titulo1',
-            description: 'description1',
-            quantity:1,
-            alt: 'producto4'
-        },
-        {
-            img: 'https://static.vecteezy.com/system/resources/previews/006/862/726/original/icon-of-a-cat-animal-logo-with-an-adorable-pose-free-vector.jpg',
-            title: 'titulo2',
-            description: 'description2',
-            quantity:1,
-            alt: 'producto5'
-        },
-        {
-            img: 'https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/38685/image-upload/CatLogoDesign003.jpg',
-            title: 'titulo3',
-            description: 'description3',
-            quantity:1,
-            alt: 'producto6'
-        },
-    ]
+   
 
+    const {
+        data: elem,
+        refetch:comeback
+
+    } = useGetAllProductsQuery()
+console.log(elem)
     const handleClose =()=>{
         setState(false)
     }
@@ -69,24 +35,33 @@ export const Productos = () => {
     }
 
     const cardBootstrap = (items) =>
-        <Card key={items.alt} className="card-product" style={{ width: '18rem' }}>
-            <button style={{border:'none' , cursor:'pointer'}} onClick={()=>showDetails({image:items.img,title:items.title,description:items.description})}>
-            <Card.Img className="imgCarousel" src={items.img} />
+        <Card  className="card-product" style={{ width: '18rem' }}>
+            <button style={{border:'none' , cursor:'pointer'}} onClick={()=>showDetails({id:items._id,image:items.photo,name:items.name,variety:items.variety,quantitymin:items.quantitymin,price:items.price,type:items.type,description:items.description,currentState : items.currentState,quantity:1})}>
+            <Card.Img className="imgCarousel" src={items.photo} />
              </button>
             <Card.Body>
-                <Card.Title>{items.title}</Card.Title>
+            <button onClick={()=>setCarrito({id:items._id,image:items.photo,name:items.name,variety:items.variety,quantitymin:items.quantitymin,price:items.price,type:items.type,description:items.description,currentState : items.currentState,quantity:1})} style={{border:'none', cursor:'pointer'}}>Add carrito</button>
+                <Card.Title>{items.name}</Card.Title>
                 <Card.Text>
-                    {items.description}
+                    {items.variety}
+                    <p>
+
+                    {items.type}
+                    </p>
+                    <p>
+                    {items.price}
+                        
+                    </p>
                 </Card.Text>
             </Card.Body>
-            <button onClick={()=>setCarrito({image:items.img,title:items.title,description:items.description,quantity:items.quantity})} style={{border:'none', cursor:'pointer'}}>Add carrito</button>
         </Card>
 
     return (
         <div>
+                {!state && elem?elem.map(cardBootstrap):''}
             <input className="product-filter" type="text" placeholder="Search product"></input>
             <div className="producs-container">
-                {!state?productos.map(cardBootstrap):<Details props={product} onclose={handleClose}/>}
+                 {state ?<Details props={product} onclose={handleClose}/>:''} 
             </div>
         </div>
     )
