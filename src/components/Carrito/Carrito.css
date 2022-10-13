@@ -3,8 +3,8 @@
     max-height: 100%;
 }
 .image-cart-container{
-    width: 250px;
-    height: 250px;
+    width: 45px;
+    height: 45px;
 }
 .cart-container{
     border: 2px solid black;
@@ -12,7 +12,7 @@
     margin: 10px;
     width: 750px;
     background-color: white;
-    box-shadow: 0 2px 10px rgb(0, 0, 0);
+    box-shadow: -12px 10px 40px 0px rgba(0, 0, 0, 0.45);
 }
 .card-cart{
     display: flex;
@@ -27,26 +27,19 @@
     background-color: rgb(230, 230, 230);
     min-height: 70vh;
 }
-
-.quit-item{
-    background-color: #8ae271;
-    margin: 5px;
-    box-shadow: 0 2px 10px rgb(0, 0, 0);
-    border-radius: 8px;
-    color: white;
-}
-.finalizar-compra{
+.botons{
     border-radius: 8px;
     background-color: #8ae271;
     margin: 5px;
-    box-shadow: 0 2px 10px rgb(0, 0, 0);
     color: white;
+    border: none;
 }
 
 .cart-details{
     margin-right: 50px;
     color: black;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
 }
 .peso-letra{
     font-weight: 800;
@@ -55,6 +48,8 @@
     background-color: #f2ffef;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgb(0, 0, 0);
+    margin: 5px;
+    padding: 5px;
 }
 
 @media(max-width: 425px){

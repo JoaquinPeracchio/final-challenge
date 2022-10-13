@@ -42,30 +42,27 @@ export default function Carrito({ onclose }) {
   let showCarrito = (item) => (
 
     <div onLoad={() => clearElement(item.price)}>
-      <button className='quit-item' value={item.id} onClick={(e) => removeElem(e.target.value)}>X</button>
+      <button className='botons' value={item.id} onClick={(e) => removeElem(e.target.value)}>X</button>
       <div className='card-cart'>
+        <p className='peso-letra'>#
+          {priceArr.push({
+            idProd: item.id,
+            name: item.name,
+            image: item.image,
+            quantity: item.quantity,
+            price: item.price * item.quantity
+          })}</p> <h5 className='peso-letra'>Product:{item.name}</h5>
         <div className='image-cart-container'>
           <img className="cart-image" src={item.image}></img>
         </div>
         <div className='cart-details'>
-          <h1 className='peso-letra'>Product:{item.name}</h1>
-          <p className='peso-letra fondo'>Variety: {item.variety}</p>
-          <p className='peso-letra fondo'>{item.description}</p>
-          <p className='peso-letra fondo'>Current State: {item.currentState}</p>
           <p className='peso-letra fondo'>Price : ${item.price * item.quantity}</p>
           <p className='peso-letra fondo'> KG: {item.quantitymin}</p>
           <p className='peso-letra fondo'> quantity {item.quantity}</p>
         </div>
       </div>
 
-      <p className='peso-letra'>#
-        {priceArr.push({
-          idProd: item.id,
-          name: item.name,
-          image: item.image,
-          quantity: item.quantity,
-          price: item.price * item.quantity
-        })}</p>
+
     </div>
   )
 
@@ -76,7 +73,7 @@ export default function Carrito({ onclose }) {
         <h3>Total de Compra: {priceArr.map(item => item.price).reduce((prev, curr) => prev + curr, 0)}</h3>
         {/* <button onClick={saveElement}>save</button>
       <button onClick={clearElement}>Clear</button> */}
-        <button className='finalizar-compra' onClick={handleSubmit}>Finalizar Compra</button>
+        <button className='botons' onClick={handleSubmit}>Finalizar Compra</button>
       </div>
     </div>
   )
