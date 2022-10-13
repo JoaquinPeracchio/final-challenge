@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+
 import Swal from 'sweetalert2'
+import './Carrito.css'
 import { useSellProductMutation , useBuyProductMutation} from '../../features/actions/ApiMethod'
 
 import { DeleteProduct ,  } from '../../features/slices/carritoSlice'
@@ -13,6 +15,11 @@ export default function Carrito() {
   const [price,setPrice]=useState(0)
   
   let priceArr=[]
+
+
+  // const saveElement =()=>{
+  //   localStorage.setItem('carrito',JSON.stringify(currentCarrito))
+  // }
 
 
 const currentCarrito = useSelector(state => state.carrito)
@@ -70,17 +77,24 @@ let showCarrito =(item)=>(
 
   
   <div onLoad={()=>clearElement(item.price)}>
-  <button id={item.id}  onClick={(e)=>removeElem({id:e.target.id})}>X</button>
- <img src={item.image}></img>
-  <h1>Product:{item.name}</h1>
-  <p>Variety: {item.variety}</p>
-  <p>{item.description}</p>
-  <p>Current State: {item.currentState}</p>
-  <p>Price : ${item.price * item.quantity}</p>
-  <p> KG: {item.quantitymin}</p>
-  <p> quantity {item.quantity}</p>
+      <button className='quit-item' value={item.id} onClick={(e) => removeElem(e.target.value)}>X</button>
+      <div className='card-cart'>
+        <div className='image-cart-container'>
+          <img className="cart-image" src={item.image}></img>
+        </div>
+        <div className='cart-details'>
+          <h1 className='peso-letra'>Product:{item.name}</h1>
+          <p className='peso-letra fondo'>Variety: {item.variety}</p>
+          <p className='peso-letra fondo'>{item.description}</p>
+          <p className='peso-letra fondo'>Current State: {item.currentState}</p>
+          <p className='peso-letra fondo'>Price : ${item.price * item.quantity}</p>
+          <p className='peso-letra fondo'> KG: {item.quantitymin}</p>
+          <p className='peso-letra fondo'> quantity {item.quantity}</p>
+        </div>
+      </div>
+
   
-  <p>#
+  <p className='peso-letra'>#
   {priceArr.push({
     idProd : item.id,
     name:item.name,
@@ -98,11 +112,14 @@ let showCarrito =(item)=>(
 
 
   return (
-    <div>
-     
-      {currentCarrito.map( showCarrito )}
-      <h3>Total de Compra: {priceArr.map(item => item.price).reduce((prev, curr) => prev + curr, 0)}</h3>
-      <button onClick={handleSubmit}>Finalizar Compra</button>
+    <div className='cart-page'>
+      <div className='cart-container'>
+        {currentCarrito.map(showCarrito)}
+        <h3>Total de Compra: {priceArr.map(item => item.price).reduce((prev, curr) => prev + curr, 0)}</h3>
+        {/* <button onClick={saveElement}>save</button>
+      <button onClick={clearElement}>Clear</button> */}
+        <button className='finalizar-compra' onClick={handleSubmit}>Finalizar Compra</button>
+      </div>
     </div>
   )
 }

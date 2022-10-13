@@ -41,6 +41,11 @@
  min-width: 100%;
 }
 
+.footer-names{
+    margin-top: 10px;
+    font-size: 13px;
+}
+
 @media(min-width: 320px){
 
     .footer-hero{

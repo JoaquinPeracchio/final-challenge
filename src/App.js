@@ -5,6 +5,8 @@ import Welcome from './pages/Welcome';
 import ShowComments from './components/Comments/ShowComments';
 import ProductsPage from './pages/ProductsPage'
 import Profile from './pages/Profile';
+import User from './pages/User'
+import Carrito from './components/Carrito/Carrito'
 
 function App() {
 
@@ -13,12 +15,14 @@ function App() {
       <BrowserRouter>
         <Layout>
           <Routes>
-            <Route path='/' element={<Welcome/>}/>
-            <Route path='/products' element={<ProductsPage/>}/>
-            <Route path='/profile' element={<Profile/>}/>
+            <Route path='/' element={<Welcome />} />
+            <Route path='/products' element={<ProductsPage />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/user' element={<User />} />
             <Route path='/signup' />
             <Route path='/signin' />
-            <Route path='/comments' element={<ShowComments />} />
+            <Route path='/cart' element={<Carrito/>} />
+            {/* <Route path='/comments' element={<ShowComments />} /> */}
           </Routes>
         </Layout> 
       </BrowserRouter>
