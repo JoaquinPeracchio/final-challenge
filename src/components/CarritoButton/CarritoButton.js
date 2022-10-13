@@ -22,7 +22,7 @@ export const CarritoButton = () => {
 
     //Debe renderizar el componente carrito.
     return (
-        <div>
+        <div className='detail-container'>
             
             <div>
                 <img onClick={()=>setState(true)} src={Cart} alt='logo' className='HeaderIcon'></img>
