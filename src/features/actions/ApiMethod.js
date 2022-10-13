@@ -15,7 +15,7 @@ const ApiMethod = createApi({
   endpoints: (builder) => ({
 
     GetAllProducts: builder.query({ query: () => `/products/` }),
-
+ 
   }),
 
 })

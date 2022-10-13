@@ -20,7 +20,7 @@ function App() {
             <Route path='/signin' />
             <Route path='/comments' element={<ShowComments />} />
           </Routes>
-        </Layout>
+        </Layout> 
       </BrowserRouter>
     </div>
   );

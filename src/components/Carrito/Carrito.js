@@ -7,7 +7,7 @@ export default function Carrito({onclose}) {
 
 
 const [price,setPrice]=useState(0)
-const counter = 0
+
 
 
 const currentCarrito = useSelector(state => state.carrito)

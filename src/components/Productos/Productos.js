@@ -12,7 +12,7 @@ export const Productos = () => {
     const [product , setProduct]=useState({})
     const sendInfo = useDispatch()
 
-   
+
 
     const {
         data: elem,

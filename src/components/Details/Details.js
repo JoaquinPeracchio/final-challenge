@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import { AddCarrito , UpdateCarrito} from '../../features/slices/carritoSlice'
 import './Details.css'
-
+ 
 export default function Details({props,onclose}) {
   console.log(props)
   console.log(onclose)
