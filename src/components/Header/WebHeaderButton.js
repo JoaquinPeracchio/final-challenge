@@ -36,12 +36,21 @@ export default function WebHeaderButton() {
                     <div className="Header-menu">
                         {open && User.role === 'admin' ? (
                             <ul className="Header-profileMenu">
-                                <li className="Header-li">{User.name} {User.lastName}</li>
-                                <button onClick={clearlocal} className="Header-signOut">
-                                    <li className="Header-li" onClick={HandleOpen}>Sign Out</li>
-                                </button>
-                                <li className="Header-li" onClick={HandleOpen}>New Admin</li>
-                                <li className="Header-li" onClick={HandleOpen}>Favourites</li>
+                                <li className="HeaderMenuLink" onClick={HandleOpen}>
+                                    <img className="HeaderIconLink" src={Thisuser} />
+                                    <LinkRouter className="HeaderMenuLink" to="/user">
+                                        {User.name} {User.lastName}
+                                    </LinkRouter>
+                                </li>
+                                <li className="HeaderMenuLink" onClick={clearlocal}>
+                                    <img className="HeaderIconLink" src={Logout} onClick={HandleOpen} />
+                                    Sign Out</li>
+                                <li className="HeaderMenuLink" onClick={HandleOpen}>
+                                    <img className="HeaderIconLink" src={Admin} />
+                                    New Admin</li>
+                                <li className="HeaderMenuLink" onClick={HandleOpen}>
+                                    <img className="HeaderIconLink" src={Fav} />
+                                    Favorites</li>
                             </ul>
                         ) : open && User.role === 'user' ? (
                             <ul className="Header-profileMenu">
@@ -51,13 +60,9 @@ export default function WebHeaderButton() {
                                         {User.name} {User.lastName}
                                     </LinkRouter>
                                 </li>
-
-
-
-                                <li className="HeaderMenuLink" onClick={HandleOpen}>
-                                    <img className="HeaderIconLink" src={Logout} onClick={clearlocal} />
+                                <li className="HeaderMenuLink" onClick={clearlocal}>
+                                    <img className="HeaderIconLink" src={Logout} onClick={HandleOpen} />
                                     Sign Out</li>
-
                                 <li className="HeaderMenuLink" onClick={HandleOpen}>
                                     <img className="HeaderIconLink" src={Fav} />
                                     Favorites</li>
