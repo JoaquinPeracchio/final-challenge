@@ -5,14 +5,13 @@
 .image-cart-container{
     width: 250px;
     height: 250px;
-    box-shadow: 0 2px 10px rgb(0, 0, 0);
 }
 .cart-container{
     border: 2px solid black;
     border-radius: 8px;
     margin: 10px;
     width: 750px;
-    background-color: #8dbd1c;
+    background-color: white;
     box-shadow: 0 2px 10px rgb(0, 0, 0);
 }
 .card-cart{
@@ -26,19 +25,22 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(230, 230, 230);
+    min-height: 70vh;
 }
 
 .quit-item{
-    background-color: rgb(154, 243, 154);
+    background-color: #8ae271;
     margin: 5px;
     box-shadow: 0 2px 10px rgb(0, 0, 0);
     border-radius: 8px;
+    color: white;
 }
 .finalizar-compra{
     border-radius: 8px;
-    background-color: rgb(154, 243, 154);;
+    background-color: #8ae271;
     margin: 5px;
     box-shadow: 0 2px 10px rgb(0, 0, 0);
+    color: white;
 }
 
 .cart-details{
@@ -50,7 +52,7 @@
     font-weight: 800;
 }
 .fondo{
-    background-color: white;
+    background-color: #f2ffef;
     border-radius: 4px;
     box-shadow: 0 2px 10px rgb(0, 0, 0);
 }

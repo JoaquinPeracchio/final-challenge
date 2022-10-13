@@ -58,7 +58,7 @@ export default function Carrito({ onclose }) {
         </div>
       </div>
 
-      <p>#
+      <p className='peso-letra'>#
         {priceArr.push({
           idProd: item.id,
           name: item.name,
