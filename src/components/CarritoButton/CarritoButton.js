@@ -2,7 +2,6 @@ import React from 'react'
 import './CarritoButton.css'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import Carrito from '../Carrito/Carrito'
 import Cart from '../../assets/icons/cart.png'
 
 export const CarritoButton = () => {
@@ -15,17 +14,23 @@ export const CarritoButton = () => {
     //Productos de prueba
     
     const handleClose =()=>{
-        setState(false)
+        if(state){
+            setState(false)
+         }
+         if(!state){
+            setState(true)
+         }
     }
     
 
 
     //Debe renderizar el componente carrito.
     return (
-        <div className='detail-container'>
+
+        <div>
             
             <div>
-                <img onClick={()=>setState(true)} src={Cart} alt='logo' className='HeaderIcon'></img>
+                <img onClick={handleClose} src={Cart} alt='logo' className='HeaderIcon'></img>
                 {data.length > 0 ? <button className='carrito-elements'><p className='numero'>{data.length}</p></button> : null }
             </div>
         

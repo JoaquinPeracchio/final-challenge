@@ -1,16 +1,32 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { DeleteProduct, UpdateCarrito } from '../../features/slices/carritoSlice'
+
+import Swal from 'sweetalert2'
 import './Carrito.css'
+import { useSellProductMutation, useBuyProductMutation } from '../../features/actions/ApiMethod'
 
-export default function Carrito({ onclose }) {
+import { DeleteProduct, } from '../../features/slices/carritoSlice'
 
+export default function Carrito() {
+
+  const [SellMut] = useSellProductMutation()
+  const [BuyMut] = useBuyProductMutation()
   const [price, setPrice] = useState(0)
+
+  let priceArr = []
+
+
+  // const saveElement =()=>{
+  //   localStorage.setItem('carrito',JSON.stringify(currentCarrito))
+  // }
+
 
   const currentCarrito = useSelector(state => state.carrito)
   console.log(currentCarrito)
   const sendInfo = useDispatch()
+
+
 
   // const saveElement =()=>{
   //   localStorage.setItem('carrito',JSON.stringify(currentCarrito))
@@ -20,13 +36,31 @@ export default function Carrito({ onclose }) {
     setPrice(price + e)
   }
 
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
     if (currentCarrito.length != null) {
-      //mutationsell(stock)
-      //mutationbuy(stock)
+      console.log('entro aca')
+      SellMut(priceArr)
+        .unwrap()
+        .then(() => { console.log('seller') })
+        .then((error) => {
+          console.log(error)
+        })
+      BuyMut(priceArr)
+        .unwrap()
+        .then(() => { console.log('buyer') })
+        .then((error) => {
+          console.log(error)
+        })
 
+      Swal.fire({
+        icon: 'success',
+        title: 'successful purchase',
+        text: 'we will send an email with the details of your purchase',
+        confirmButtonText: 'ok'
+      })
     } else {
       alert('your carrito its empty')
     }
@@ -37,10 +71,7 @@ export default function Carrito({ onclose }) {
     sendInfo(DeleteProduct(e))
   }
 
-  let priceArr = []
-  console.log(priceArr)
   let showCarrito = (item) => (
-
     <div onLoad={() => clearElement(item.price)}>
       <button className='botons' value={item.id} onClick={(e) => removeElem(e.target.value)}>X</button>
       <div className='card-cart'>
@@ -61,10 +92,9 @@ export default function Carrito({ onclose }) {
           <p className='peso-letra fondo'> quantity {item.quantity}</p>
         </div>
       </div>
-
-
     </div>
   )
+
 
   return (
     <div className='cart-page'>
