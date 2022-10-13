@@ -75,3 +75,23 @@
     align-items: center;
     justify-content: center;
 }
+@media(min-width: 1024px){
+    .ModalButtonResponsive{
+        display: none;
+    }
+}
+
+@media(max-width: 768px){
+    .ModalFormInput{
+        width: 100%;
+    }
+    .ModalBodyContainer{
+        width: 100%;
+    }
+    .ModalBodyExtraContainer{
+        width: 100%;
+    }
+    .UserModalFooterTitle{
+        font-size: 18px;
+    }
+}
