@@ -75,14 +75,14 @@ export default function Carrito() {
     <div onLoad={() => clearElement(item.price)}>
       <hr></hr>
       <div className='card-cart'>
-        <p className='peso-letra'>#
+        <p className='peso-letra hash'>#
           {priceArr.push({
             idProd: item.id,
             name: item.name,
             image: item.image,
             quantity: item.quantity,
             price: item.price * item.quantity
-          })}</p> <h5 className='peso-letra'>Product:{item.name}</h5>
+          })}</p> <h6 className='peso-letra product-title'>Product:{item.name}</h6>
         <div className='image-cart-container'>
           <img className="cart-image" src={item.image}></img>
         </div>
@@ -104,7 +104,7 @@ export default function Carrito() {
         <h5 className='total-compra'>Total de Compra: {priceArr.map(item => item.price).reduce((prev, curr) => prev + curr, 0)}</h5>
         {/* <button onClick={saveElement}>save</button>
       <button onClick={clearElement}>Clear</button> */}
-        <button className='botons' onClick={handleSubmit}>Finalizar Compra</button>
+        <button className='botons finalizar-compra' onClick={handleSubmit}>Finalizar Compra</button>
       </div>
     </div>
   )

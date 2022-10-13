@@ -6,7 +6,7 @@
     border-radius: 1rem;
     box-shadow: -12px 10px 40px 0px rgba(0, 0, 0, 0.45);
     overflow: hidden;
-    background-color: rgba(128, 128, 128, 0.39);
+    background-color: rgba(155, 155, 155, 0.39);
 }
 
 .ContainerBody {
@@ -29,7 +29,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin-left: 3px;
+    margin-left: 4px;
+    margin-bottom: 4px;
 }
 
 .CarritoButton {
@@ -52,15 +53,23 @@
 .CarritoButton:hover {
     opacity: 1;
 }
+.CarritoButton:active{
+    background-color:  rgb(218, 142, 1);
+}
 
 @media(max-width: 768px) {
     .Foto{
         width: 150px;
         height: 150px;
+        margin-top: 45px;
     }
     .Container {
         width: 500px;
-        height: 250px;
+        height: 280px;
+    }
+    .ContainerImg{
+        background-color: white;
+        height: 280px;
     }
 }
 @media(max-width: 425px) {
@@ -70,16 +79,45 @@
     }
     .Container {
         width: 500px;
-        height: 280px;
+        height: 295px;
+    }
+    .ContainerImg{
+        height: 295px;
+    }
+}
+@media(max-width: 375px) {
+    .Foto{
+        width: 150px;
+        height: 150px;
+    }
+    .Container {
+        width: 500px;
+        height: 295px;
+    }
+    .ContainerImg{
+        height: 295px;
+    }
+    .CarritoButton{
+        width: 170px;
+    }
+    .input-detail{
+        width: 170px;
     }
 }
 @media(max-width: 320px) {
     .Foto{
-        width: 50px;
-        height: 50px;
+        width: 100px;
+        height: 100px;
     }
     .Container {
-        width: 500px;
-        height: 280px;
+        min-width: 318px;
+        height: 300px;
+    }
+    .ContainerImg{
+        height: 300px;
+        min-width: 100px;
+    }
+    .Foto{
+        margin-top: 100px;
     }
 }
