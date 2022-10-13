@@ -34,7 +34,13 @@
     color: white;
     border: none;
 }
-
+.x{
+    height: 28px;
+    margin-left: 10px;
+}
+.total-compra{
+    margin-left: 5px;
+}
 .cart-details{
     margin-right: 50px;
     color: black;

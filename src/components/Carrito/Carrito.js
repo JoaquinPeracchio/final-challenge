@@ -73,7 +73,7 @@ export default function Carrito() {
 
   let showCarrito = (item) => (
     <div onLoad={() => clearElement(item.price)}>
-      <button className='botons' value={item.id} onClick={(e) => removeElem(e.target.value)}>X</button>
+      <hr></hr>
       <div className='card-cart'>
         <p className='peso-letra'>#
           {priceArr.push({
@@ -90,17 +90,18 @@ export default function Carrito() {
           <p className='peso-letra fondo'>Price : ${item.price * item.quantity}</p>
           <p className='peso-letra fondo'> KG: {item.quantitymin}</p>
           <p className='peso-letra fondo'> quantity {item.quantity}</p>
+          <button className='botons x' value={item.id} onClick={(e) => removeElem(e.target.value)}>X</button>
         </div>
       </div>
+      <hr></hr>
     </div>
   )
-
 
   return (
     <div className='cart-page'>
       <div className='cart-container'>
         {currentCarrito.map(showCarrito)}
-        <h3>Total de Compra: {priceArr.map(item => item.price).reduce((prev, curr) => prev + curr, 0)}</h3>
+        <h5 className='total-compra'>Total de Compra: {priceArr.map(item => item.price).reduce((prev, curr) => prev + curr, 0)}</h5>
         {/* <button onClick={saveElement}>save</button>
       <button onClick={clearElement}>Clear</button> */}
         <button className='botons' onClick={handleSubmit}>Finalizar Compra</button>
