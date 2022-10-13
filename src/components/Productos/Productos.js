@@ -40,7 +40,7 @@ export const Productos = () => {
             <div className='body-card-container'>
                 <div className='name-product'>{items.name}</div>
                 <div className='card-body'> ${items.price}.00</div>
-                <button className='add-carrito-btn' onClick={() => setCarrito({ id: items._id, image: items.photo, name: items.name, variety: items.variety, quantitymin: items.quantitymin, price: items.price, type: items.type, description: items.description, currentState: items.currentState, quantity: 1 })} style={{ border: 'none', cursor: 'pointer' }}>Add carrito</button>
+                <button className='add-carrito-btn' onClick={() => setCarrito({ id: items._id, image: items.photo, name: items.name, variety: items.variety, quantitymin: items.quantitymin, price: items.price, type: items.type, description: items.description, currentState: items.currentState, quantity: 1 })} style={{ border: 'none', cursor: 'pointer' }}>Add to cart</button>
             </div>
         </div>
 
