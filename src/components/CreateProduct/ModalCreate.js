@@ -1,35 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
-import { useCreateItineraryMutation } from '../../features/citiesAPI';
-export default function ModalCreate({ children, onClose }) {
+import { useCreateProductMutation } from '../../features/actions/ApiMethod'
+export default function ModalCreate({onClose }) {
 
-  const [createItinerary] = useCreateItineraryMutation()
-  const userSession = JSON.parse(localStorage.getItem('user'))
+  const [createProduct] = useCreateProductMutation()
+
   const [photo, setPhoto] = useState()
-  const [price, setPrice] = useState()
-  const [tags, setTags] = useState()
+  const [price, setPrice] = useState(1)
   const [name, setName] = useState()
   const [edit, setEdit] = useState()
-
-  const [stock, setStock] = useState(0)
-  const [quantity,setQuantity]=useState()
+  const [type, setType] = useState('Fruit')
+  const [stock, setStock] = useState(1)
+  const [quantity,setQuantity]=useState(1)
   const [variety,setVariety]=useState()
 
   const current = new Date()
-  const dayMonth = `${current.getDate()}/${current.getMonth()}/${current.getFullYear}`
+  const dayMonth = `${current.getDate()}/${current.getMonth()}/${current.getFullYear()}`
 
 
   const handlePhoto = (e) => {
     setPhoto(e.target.value)
   }
 
-  const handleDuration = (e) => {
-    setDuration(e.target.value)
-
-  }
-  const handleTags = (e) => {
-    setTags(e.target.value)
-  }
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -39,20 +31,26 @@ export default function ModalCreate({ children, onClose }) {
     setPrice(e.target.value)
 
   }
+  const handleStock = (e) => {
+    setStock(e.target.value)
 
+  }
+  const handleQuantity = (e) => {
+    setQuantity(e.target.value)
 
+  }
 
   useEffect(() => {
     let objCreate = {
-      user: children.idUser,
       name: name,
-
-      variety : variety,
-      stock: stock,
-      price: price,
+      user: '6345fbd9bb7e879c60015fe8',
       type: type,
-      quantity :quantity,
-      date: dayMonth
+      variety : variety,
+      quantitymin :quantity,
+      stock: stock,
+      date: dayMonth,
+      price: price,
+      photo: photo,
 
 
 
@@ -60,7 +58,7 @@ export default function ModalCreate({ children, onClose }) {
 
     setEdit(objCreate)
 
-  }, [photo, price, tags, name, duration])
+  }, [photo, price, type, name, ])
 
 
 
@@ -69,26 +67,27 @@ export default function ModalCreate({ children, onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(edit)
     //mandarlo al controlador create
 
-    if (edit.name.length <= 1) {
-      Swal.fire({
-        title: 'Name Failed',
-        text: 'please verify that the name has more than 2 letters and does not include numbers'
-      })
-    } else {
-      createItinerary(edit)
-        .unwrap()
-        .then(() => { })
-        .then((error) => {
-          console.log(error)
-        })
-      Swal.fire({
-        icon: 'success',
-        title: 'Registred with success',
-        text: 'please look and read or create yours itineraries',
-        confirmButtonText: 'Do It'
-      })
+     if (edit.name.length < 3) {
+       Swal.fire({
+         title: 'Name Failed',
+         text: 'please verify that the name has more than 2 letters and does not include numbers'
+       })
+     } else {
+                       createProduct(edit)
+                         .unwrap()
+                         .then(() => { console.log('entro')})
+                         .then((error) => {
+                           console.log(error)
+                         })
+       Swal.fire({
+         icon: 'success',
+         title: 'Created Product with success',
+         text: 'Great , you can see the product in the product section',
+         confirmButtonText: 'Ok'
+       })
 
 
     }
@@ -100,34 +99,28 @@ export default function ModalCreate({ children, onClose }) {
   return (
     <div className='createItiner'>
 
-      <h3 className="createH3">Create your New Product </h3>
+      <h5 className="createH3">Create your New Product </h5>
       <p >Name Of Publication </p>
 
       <input type='text' onChange={handleName}></input>
-      <p >Name Of Product </p>
+      <p >Variety </p>
       <input type='text' onChange={e =>setVariety(e.target.value)}></input>
 
-
-      <h4 className="createH4">User :   {userSession.name} </h4>
-
-
-      <p >City   {children.city} </p>
-
+      <h6 className="createH4">User : Aguh   </h6>
       <p >Image  </p>
-      <input type='text' onChange={handlePhoto}></input>
+      <input type='file' onChange={handlePhoto}></input>
       <p >Price </p>
-      <input type='Number' onChange={handlePrice}></input>
+      <input type='number' onChange={handlePrice}></input>
 
 
       <p >stock  </p>
-      <input type='Number' onChange={e => setStock(e.target.value)} ></input>
-      <p >quantity for kg  </p>
-      <input type='Number' onChange={e => setQuantity(e.target.value)} ></input>
+      <input type='number' onChange={handleStock} ></input>
+      <p >quantity min for kg  </p>
+      <input type='number' onChange={handleQuantity} ></input>
       <p >Type</p>
-      <select onChange={setType(option.target.value)}>
+      <select onChange={(e)=>setType(e.target.value)}>
         <option value='Fruit'>Fruit</option>
         <option value='Vegetable'>Vegetable</option>
-        <option value='Other'>Other</option>
       </select>
       <p>Date : {dayMonth}</p>
 

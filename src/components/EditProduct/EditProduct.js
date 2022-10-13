@@ -1,81 +1,86 @@
-import { useState } from "react"
-import { useGetItinerariesUserQuery, useRemoveItineraryMutation } from "../features/citiesAPI"
-import '../styles/ItineraryUser.css'
-import ModalEdit from "./Modals/ModalEdit"
+ import { useState } from "react"
+ import { useGetProductsUserQuery } from "../../features/actions/ApiMethod"
+ import { useRemoveProductMutation } from "../../features/actions/ApiMethod"
+import ModalEdit from "./ModalEdit/ModalEdit"
 
+ export default function EventProduct() {
 
-export default function EventProduct() {
-
-    const [input, setInput] = useState(false)
-    const [idel, setIdel] = useState({})
+    const [destroyProduct] = useRemoveProductMutation()
+     const [input, setInput] = useState(false)
+     const [idel, setIdel] = useState({})
    
 
-    const [destroyItinerary] = useRemoveItineraryMutation()
-    const {
-        data: elem,
-        refetch:comeback
+ 
+     const {
+         data: elem,
+         refetch:comeback
 
-    } = useGetItinerariesUserQuery(id)
+     } = useGetProductsUserQuery('6345fbd9bb7e879c60015fe8')
 
+     console.log(elem)
 
-    const handleClose = () => {
-        setInput(false)
-        comeback()
+     const handleClose = () => {
+         setInput(false)
+         comeback()
 
-    }
-
-
-    const handleDelete = (e) => {
-        let remove = e.target.value
-        destroyItinerary(remove)
-            .unwrap()
-            .then(() => {})
-            .then((error) => {
-                console.log(error)
-            })
-        comeback()
-    }
+     }
 
 
+     const handleDelete = (e) => {
+         let remove = e.target.value
+          destroyProduct(remove)
+              .unwrap()
+              .then(() => {console.log('deleted')})
+              .then((error) => {
+                  console.log(error)
+              })
+         comeback()
+     }
+    //  user: '',
+    //  image: photo,
+    //  name: name,
+    //  variety : variety,
+    //  stock: stock,
+    //  price: price,
+    //  type: type,
+    //  quantity :quantity,
+    //  date: dayMonth
 
-    let cityShow = (city) => (
-        <div className="ItinerariesUser">
-            <button onClick={handleDelete} value={city._id} className='buttonDelete'>x</button>
-            <h3 className="citiItiner"> {city.name}</h3>
-            <br></br>
+     console.log(idel)
+     let productShow = (product) => (
+         <div className="productUser">
             <hr></hr>
-            <h4 className="userItiner">User : {city.user.name}</h4>
-            <hr></hr>
-            <br></br>
-            <p >City:   {city.city.city}</p>
-            <p >Price: $ {city.price}</p>
-            <p >Likes:   {city.likes}</p>
-            <p >Tags:  {city.tags}</p>
-            <p >Duration: {city.duration}</p>
+             <button onClick={handleDelete} value={product._id} className='buttonDelete'>x</button>
+             <hr></hr>
+             <h4 className="userProduct">User : {product.user.name}</h4>
+             <hr></hr>
+             <h3 className="nameProduct"> {product.name}</h3>
+             <br></br>
+             <p >Price: $ {product.price}</p>
+             <p >Quantity min:   {product.quantitymin}</p>
+             <p >Type:  {product.type}</p>
+             <p>Stock : {product.stock}</p>
+             <p>Variety : {product.variety}</p>
 
-            <button onClick={() => setIdel({
-                id: city._id,
-                user: city.user.name,
-                likes: city.likes,
-                cities: city.city.city,
-                cityId: city.city._id,
-                userId: city.user._id
-            }) & setInput(true)} className='buttonEdit'>Edit</button>
-        </div>
+             <button onClick={() => setIdel({
+                 id: product._id,
+                 user: product.user.name,
+                 userId: product.user._id
+             }) & setInput(true)} className='buttonEdit'>Edit</button>
+         </div>
 
-    )
+     )
+     return (
+         <div>
+             <h1 className="titleIti">My Products</h1>
+             <div className="container">
 
-    return (
-        <div>
-            <h1 className="titleIti">Itineraries</h1>
-            <div className="container">
+             {input ? <ModalEdit elemento={idel} onclose={handleClose} /> : elem ? elem.response.map(productShow) : ''}
 
-                {input ? <ModalEdit elemento={idel} onclose={handleClose} /> : elem ? elem.response.map(cityShow) : ''}
-
-            </div>
-        </div>
+             </div>
+         </div>
 
 
-    )
+     )
 
-}
+ }

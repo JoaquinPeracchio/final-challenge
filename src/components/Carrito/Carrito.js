@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
-import { DeleteProduct , UpdateCarrito  } from '../../features/slices/carritoSlice'
+import Swal from 'sweetalert2'
+import { useSellProductMutation , useBuyProductMutation} from '../../features/actions/ApiMethod'
 
-export default function Carrito({onclose}) {
+import { DeleteProduct ,  } from '../../features/slices/carritoSlice'
 
-
-const [price,setPrice]=useState(0)
-
+export default function Carrito() {
+  
+  const [SellMut]=useSellProductMutation()
+  const [BuyMut]=useBuyProductMutation()
+  const [price,setPrice]=useState(0)
+  
+  let priceArr=[]
 
 
 const currentCarrito = useSelector(state => state.carrito)
@@ -29,9 +34,26 @@ const handleSubmit = (e)=>{
   e.preventDefault()
 
   if(currentCarrito.length != null){
-    //mutationsell(stock)
-    //mutationbuy(stock)
+    console.log('entro aca')
+    SellMut(priceArr)
+    .unwrap()
+    .then(() => {  console.log('seller')    })
+    .then((error) => {
+      console.log(error)
+    })
+    BuyMut(priceArr)
+    .unwrap()
+    .then(() => {  console.log('buyer')    })
+    .then((error) => {
+      console.log(error)
+    })
 
+    Swal.fire({
+      icon:'success',
+      title:'successful purchase',
+      text:'we will send an email with the details of your purchase',
+      confirmButtonText:'ok'
+    })
   }else{
     alert('your carrito its empty')
   }
@@ -43,13 +65,12 @@ const removeElem =(e)=>{
 }
 
 
-let priceArr=[]
 console.log(priceArr)
 let showCarrito =(item)=>(
 
   
   <div onLoad={()=>clearElement(item.price)}>
-  <button value={item.id}  onClick={(e)=>removeElem(e.target.value)}>X</button>
+  <button id={item.id}  onClick={(e)=>removeElem({id:e.target.id})}>X</button>
  <img src={item.image}></img>
   <h1>Product:{item.name}</h1>
   <p>Variety: {item.variety}</p>
@@ -63,8 +84,10 @@ let showCarrito =(item)=>(
   {priceArr.push({
     idProd : item.id,
     name:item.name,
-    image:item.image,
-    quantity:item.quantity,
+    seller:'6345fbd9bb7e879c60015fe8',
+    buyer:'634587e3603a5c944f4e41b9',
+    photo:item.image,
+    quantitymin:item.quantity,
     price: item.price * item.quantity
   })}</p>
 </div>
@@ -76,11 +99,9 @@ let showCarrito =(item)=>(
 
   return (
     <div>
-      <button onClick={onclose}>X</button>
+     
       {currentCarrito.map( showCarrito )}
       <h3>Total de Compra: {priceArr.map(item => item.price).reduce((prev, curr) => prev + curr, 0)}</h3>
-      {/* <button onClick={saveElement}>save</button>
-      <button onClick={clearElement}>Clear</button> */}
       <button onClick={handleSubmit}>Finalizar Compra</button>
     </div>
   )

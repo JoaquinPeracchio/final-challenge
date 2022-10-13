@@ -13,7 +13,12 @@ export const CarritoButton = () => {
     //Productos de prueba
     
     const handleClose =()=>{
-        setState(false)
+        if(state){
+            setState(false)
+         }
+         if(!state){
+            setState(true)
+         }
     }
     
 
@@ -23,11 +28,11 @@ export const CarritoButton = () => {
         <div>
             
             <div>
-                <img onClick={()=>setState(true)} src='https://cdn-icons-png.flaticon.com/512/107/107831.png' alt='logo' className='carrito-button'></img>
+                <img onClick={handleClose} src='https://cdn-icons-png.flaticon.com/512/107/107831.png' alt='logo' className='carrito-button'></img>
                 <button className='carrito-elements'>{data.length}</button>
             </div>
            
-            {state?<Carrito onclose={handleClose}></Carrito>:''}
+            {state?<Carrito ></Carrito>:''}
         
         </div>
 

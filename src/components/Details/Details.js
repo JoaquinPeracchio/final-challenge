@@ -12,16 +12,8 @@ const select = useSelector(state=>state.carrito)
 const [populater , setPopulate]=useState(1)
 const [popularity , setPopularity]=useState()
 console.log(populater)
-// const {
-//     data:elem,
-//     refetch : comeback,
-// }=useReadUserQuery(props.product.user._id)
+ 
 
-// if(elem){
-//     elem.popularity.map(e => setPopulate(e + populater))
-//     setPopularity(  populater / elem.popularity.length )
-
-// }
   const handleContext = (e)=>{
     console.log(e)
     let obj = {
