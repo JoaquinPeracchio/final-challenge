@@ -56,7 +56,7 @@ export default function WebHeaderButton() {
                             <ul className="Header-profileMenu">
                                 <li className="HeaderMenuLink" onClick={HandleOpen}>
                                     <img className="HeaderIconLink" src={Thisuser} />
-                                    <LinkRouter className="HeaderMenuLink" to="/user">
+                                    <LinkRouter className="HeaderMenuLink" to="/profile">
                                         {User.name} {User.lastName}
                                     </LinkRouter>
                                 </li>

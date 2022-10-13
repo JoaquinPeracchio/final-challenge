@@ -13,6 +13,7 @@ export default function Carrito() {
   const [SellMut] = useSellProductMutation()
   const [BuyMut] = useBuyProductMutation()
   const [price, setPrice] = useState(0)
+  const dispatch = useDispatch()
 
   let priceArr = []
 
@@ -23,7 +24,7 @@ export default function Carrito() {
 
 
   const currentCarrito = useSelector(state => state.carrito)
-  console.log(currentCarrito)
+  // console.log(currentCarrito)
   const sendInfo = useDispatch()
 
 
@@ -68,7 +69,7 @@ export default function Carrito() {
   }
   const removeElem = (e) => {
     console.log(e)
-    sendInfo(DeleteProduct(e))
+    dispatch(DeleteProduct(e))
   }
 
   let showCarrito = (item) => (
