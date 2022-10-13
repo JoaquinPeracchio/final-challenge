@@ -2,11 +2,16 @@ import { Link as LinkRouter } from "react-router-dom";
 import { useState } from "react";
 import { CarritoButton } from '../CarritoButton/CarritoButton'
 import WebHeaderButton from "./WebHeaderButton";
+import ResponsiveHeaderNav from "./ResponsiveHeaderNav";
 import Logo from '../../assets/provisionalLogo.png'
 import Home from '../../assets/icons/house.png'
 import Market from '../../assets/icons/market.png'
-import User from '../../assets/icons/user.png'
+import Cart from '../../assets/icons/cart.png'
+import HomeDark from '../../assets/icons/houseDark.png'
+import MarketDark from '../../assets/icons/marketDark.png'
+import CartDark from '../../assets/icons/cartDark.png'
 import "./Header.css";
+import "./ResponsiveHeaderNav.css"
 
 
 export default function Header() {
@@ -31,15 +36,33 @@ export default function Header() {
       </div>
       <div className={`HeaderNavContainer ${openMenu ? "HeaderNavActive" : ""} `}>
         <nav className="HeaderNav">
-          <ul className='HeaderNavLinksContainer'>
-            <li className="HeaderNavLinkUser">
-              <img className='HeaderNavIconUser' src={User} />
+          <ResponsiveHeaderNav />
+          <ul className='HeaderNavSecondContainer'>
+            <li className="HeaderNavSecondLink">
+              <LinkRouter to="/" key="home" onClick={toggleMenu} className='HeaderNavSecondLinkContainer'>
+                <img className='HeaderIcon' src={HomeDark} />
+                Home
+              </LinkRouter>
+            </li>
+            <li className="HeaderNavSecondLink">
+              <LinkRouter to="/products" key="products" onClick={toggleMenu} className='HeaderNavSecondLinkContainer'>
+                <img className='HeaderIcon' src={MarketDark} />
+                Market
+              </LinkRouter>
+            </li>
+            <li className="HeaderNavSecondLink">
+              <LinkRouter to="/cart" key="cart" onClick={toggleMenu} className='HeaderNavSecondLinkContainer'>
+                <img className='HeaderIcon' src={CartDark} />
+                Cart
+              </LinkRouter>
             </li>
           </ul>
         </nav>
         <div className='HeaderNavBackgound' onClick={toggleMenu}>&nbsp;</div>
       </div>
-      <img src={Logo} className='HeaderLogo' />
+      <LinkRouter to="/" key="home">
+        <img src={Logo} className='HeaderLogo' />
+      </LinkRouter>
       <div className="HeaderIconsContainer">
         <LinkRouter to="/" key="home">
           <img className='HeaderIcon HeaderIconButton' src={Home} />
@@ -47,11 +70,12 @@ export default function Header() {
         <LinkRouter to="/products" key="products">
           <img className='HeaderIcon HeaderIconButton' src={Market} />
         </LinkRouter>
-
-        <WebHeaderButton />
+        <div className='HeaderIconButton' >
+          <WebHeaderButton />
+        </div>
         <div className="HeaderCartContainer" onClick={toggleCart}>
-        <LinkRouter to="/cart" key="cart">
-          <CarritoButton/>
+          <LinkRouter to="/cart" key="cart">
+            <CarritoButton />
           </LinkRouter>
         </div>
       </div>
