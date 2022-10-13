@@ -90,6 +90,8 @@ export default function SignInModal() {
 
     return (
         <>
+            <button className='ModalButtonResponsive HeaderNavResponsiveButton' onClick={handleShowModalSignIn}>SignIn</button>
+            <button className='ModalButtonResponsive HeaderNavResponsiveButton' onClick={handleShowModalSignUp}>SignUp</button>
             <img onClick={handleShowModalSignIn} className='HeaderIcon HeaderIconButton' src={User} />
 
             <Modal show={modalState === "modalSignIn"} onHide={handleClose}>
