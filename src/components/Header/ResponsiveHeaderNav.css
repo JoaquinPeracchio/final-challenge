@@ -1,0 +1,88 @@
+
+.HeaderNavLinkUser{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+    gap: 10px;
+}
+.HeaderNavResponsiveContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+.HeaderNavResponsiveUserContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+.HeaderNavResponsiveUserIcon{
+    width: 36px;
+    border-radius: 50%;
+}
+.HeaderNavResponsiveUserName{
+    text-align: center;
+    margin: 0;
+}
+.HeaderNavResponsiveText{
+    margin: 5px 0;
+    text-align: center;
+}
+.HeaderNavResponsiveButtonContainer{
+    width: 100%;
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    justify-content: space-around;
+}
+.HeaderNavResponsiveButton{
+    width: 28vmin;
+    height: 11vmin;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #86ba09;
+    color: #ffffff;
+    border-radius: 8px;
+    border: none;
+}
+.HeaderNavResponsiveButtonLink{
+    color: #ffffff;
+    text-decoration: none;
+}
+.HeaderNavSecondLink{
+    padding: 6px 0;
+}
+
+.HeaderNavSecondContainer{
+    padding: 0.3rem 1rem;
+    margin: .5rem;
+    font-size: 20px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.HeaderNavSecondLinkContainer{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    cursor: pointer;
+    color: #000000;
+    text-decoration: none;
+}
+.HeaderNavSecondLinkContainer:hover{
+    color: #86ba09;
+}
+
+@media(min-width: 768px){
+    .HeaderNavResponsiveButton{
+        width: 140px;
+        height: 50px;
+        font-size: 18px;
+    }
+}
