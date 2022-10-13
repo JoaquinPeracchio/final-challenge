@@ -15,9 +15,57 @@ const ApiMethod = createApi({
   endpoints: (builder) => ({
 
     GetAllProducts: builder.query({ query: () => `/products/` }),
- 
+
+    GetProductsUser: builder.query({ query: (id) => `/products/user/${id}` }),
+
+
+////////////////////////////////////////MUTATION////////////////////////////////////////////////////////////
+
+    UpdateProduct: builder.mutation({
+      query: (payload) => ({
+        url: `/products/${payload.id}`,
+        method: 'PATCH',
+        body: payload,
+      }),
+    }),
+
+
+
+    RemoveProduct: builder.mutation({
+      query: (payload) => ({
+        url: `/products/${payload}`,
+        method: 'DELETE',
+      }),
+    }),
+
+
+
+    CreateProduct: builder.mutation({
+      query: (payload) => ({
+        url: `/products/`,
+        method: 'POST',
+        body:payload
+      }),
+    }),
+
+    SellProduct: builder.mutation({
+      query: (payload) => ({
+        url: `/auth/sell/${payload.seller}`,
+        method: 'POST',
+        body:payload
+      }),
+    }),
+
+    BuyProduct: builder.mutation({
+      query: (payload) => ({
+        url: `/auth/buy/${payload.buyer}`,
+        method: 'POST',
+        body:payload
+      }),
+    }),
+
   }),
 
 })
-export const {useGetAllProductsQuery}=ApiMethod
+export const {useGetAllProductsQuery,useCreateProductMutation,useGetProductsUserQuery,useBuyProductMutation,useSellProductMutation,useUpdateProductMutation,useRemoveProductMutation}=ApiMethod
 export default ApiMethod

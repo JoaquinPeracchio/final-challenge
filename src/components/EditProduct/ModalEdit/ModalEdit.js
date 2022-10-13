@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { useEditItineraryMutation } from '../../features/citiesAPI'
+import { useUpdateProductMutation } from '../../../features/actions/ApiMethod'
 import Swal from 'sweetalert2'
 export default function ModalEdit({onclose,elemento}) {
 
-  const [editItinerary]=useEditItineraryMutation()
+  const [editProduct]=useUpdateProductMutation()
 
 
  const [price,setPrice]=useState()
- const [duration,setDuration]=useState()
- const [tags,setTags]=useState()
+ const [stock,setStock]=useState()
+ const [type,setType]=useState()
  const [name,setName]=useState()
+ const [quantity,setQuantity]=useState()
+ const [variety,setVariety]=useState()
 const [edit,setEdit]=useState()
 
   useEffect(()=>{
@@ -17,17 +19,17 @@ const [edit,setEdit]=useState()
       id:elemento.id,
       name:name,
       user:elemento.userId,
-      likes:elemento.likes,
-      city:elemento.cityId,
       price:price,
-      duration:duration,
-      tags:tags
+      stock:stock,
+      type:type,
+      quantityMin:quantity,
+      variety:variety
     }
     setEdit(editItiner)
 
-  },[elemento.id,elemento.user,elemento.likes,elemento.cityId,price,duration,tags])
+  },[elemento.id,elemento.userId,price,stock,type])
 
-  
+  console.log(edit)
 
 
 
@@ -36,13 +38,11 @@ const [edit,setEdit]=useState()
     }
 
 
-    const handleDuration = (e) =>{
-      setDuration(e.target.value)
+    const handleStock = (e) =>{
+      setStock(e.target.value)
     }
 
-    const handleTags =(e)=>{
-      setTags(e.target.value)
-    }
+
     const handleName =(e)=>{
       setName(e.target.value)
     }
@@ -54,27 +54,30 @@ const [edit,setEdit]=useState()
         if(edit.name.length < 5 ){
           Swal.fire({
               title:'Name Failed',
-              text:'please verify that the name has more than 5 letters , the name must be a descriptive name for the itinerary'
+              text:'please verify that the name has more than 5 letters'
           })
-        }else if(edit.duration > 36){
+        }else if(edit.stock < 0){
           Swal.fire({
-            title:'Duration Failed',
-            text:'the duration cannot be longer than 36 hours'
+            title:'Stock Failed',
+            text:'the number should be greater than 0'
         })
 
+        }else{
+
+          //mandarlo al controlador update
+          editProduct(edit)
+          .unwrap()
+          .then(() => {  console.log('updated')    })
+          .then((error) => {
+            console.log(error)
+          })
+          Swal.fire({
+            icon:'success',
+            title:'Edited with success',
+            text:'if you will edit again there product, can do it , if finished please press close for the come back at the previus page',
+            confirmButtonText:'ok'
+          })
         }
-        //mandarlo al controlador update
-      editItinerary(edit)
-      .unwrap()
-      .then(() => {      Swal.fire({
-                          icon:'success',
-                          title:'Edited with success',
-                          text:'if you will edit agait thats itinerary, can do it , if finished please press close for the come back the previus page',
-                          confirmButtonText:'ok'
-                                })})
-      .then((error) => {
-         console.log(error)
-      })
 
     }
 
@@ -88,15 +91,20 @@ const [edit,setEdit]=useState()
             
             <h4  className="userItiner">User : {elemento.user}</h4>
             
-            <p >City: {elemento.cities} </p>
            
             <p >Price: </p>
             <input type='number' onChange={handlePrice} ></input>
-            <p >Likes:  {elemento.likes} </p>
-            <p >Tags:  </p>
-            <input type='number' onChange={handleTags} ></input>
-            <p >Duration:</p>
-            <input type='number' onChange={handleDuration} ></input>
+            <p >Type:  </p>
+            <select onChange={(e)=>setType(e.target.value)}>
+            <option value='Fruit'>Fruit</option>
+            <option value='Vegetable'>Vegetable</option>
+          </select>
+            <p >Stock:</p>
+            <input type='number' onChange={handleStock} ></input>
+            <p >Variety:</p>
+            <input type='text' onChange={(e)=>setVariety(e.target.value)} ></input>
+            <p >Quantity Min x KG:</p>
+            <input type='number' onChange={(e)=>setQuantity(e.target.value)} ></input>
             <div className='butonEdit'>
             <button onSubmit={handleSubmit} className='save'>Save</button>
             <button onClick={onclose} className='close'>Close</button>

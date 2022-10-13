@@ -16,11 +16,12 @@ export const Productos = () => {
 
     const {
         data: elem,
-        refetch: comeback
+        refetch:comeback
 
     } = useGetAllProductsQuery()
-    console.log(elem)
-    const handleClose = () => {
+console.log(elem)
+    const handleClose =()=>{
+
         setState(false)
     }
 
@@ -35,23 +36,27 @@ export const Productos = () => {
     }
 
     const cardBootstrap = (items) =>
+
         <div key={items.alt} className="card-product" style={{ width: '18rem' }}>
-            <button className='btn-details' style={{ border: 'none', cursor: 'pointer' }} onClick={() => showDetails({ image: items.photo, title: items.title, description: items.description })}>
-                <Card.Img className="imgCarousel" src={items.photo} />
-            </button>
-            <div className='body-card-container'>
-                <div className='name-product'>{items.name}</div>
-                <div className='card-body'> ${items.price}.00</div>
-                <button className='add-carrito-btn' onClick={() => setCarrito({ image: items.photo, title: items.title, description: items.description, quantity: items.quantity })} style={{ border: 'none', cursor: 'pointer' }}>Add to cart</button>
+            <button className='btn-details'  style={{border:'none' , cursor:'pointer'}} onClick={()=>showDetails({id:items._id,image:items.photo,name:items.name,variety:items.variety,quantitymin:items.quantitymin,price:items.price,type:items.type,description:items.description,currentState : items.currentState,quantity:1})}>
+            <Card.Img className="imgCarousel" src={items.photo} />
+             </button>
+             <div className='body-card-container'>
+            <div className='name-product'>{items.name}</div>
+            <div className='card-body'> ${items.price}.00</div>
+            <button className='add-carrito-btn' onClick={()=>setCarrito({id:items._id,image:items.photo,name:items.name,variety:items.variety,quantitymin:items.quantitymin,price:items.price,type:items.type,description:items.description,currentState : items.currentState,quantity:1})} style={{border:'none', cursor:'pointer'}}>Add carrito</button>
             </div>
         </div>
+
 
     return (
         <div>
             <input className="product-filter" type="text" placeholder="Search product"></input>
-            <div className='producs-container'>
-                {!state && elem ? elem.map(cardBootstrap) : ''}
-                {state ? <Details props={product} onclose={handleClose} /> : ''}
+                {!state && elem?elem.map(cardBootstrap):''}
+
+            <div className="producs-container">
+                 {state ?<Details props={product} onclose={handleClose}/>:''} 
+
             </div>
         </div>
     )

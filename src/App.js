@@ -24,7 +24,7 @@ function App() {
             <Route path='/cart' element={<Carrito/>} />
             {/* <Route path='/comments' element={<ShowComments />} /> */}
           </Routes>
-        </Layout>
+        </Layout> 
       </BrowserRouter>
     </div>
   );
