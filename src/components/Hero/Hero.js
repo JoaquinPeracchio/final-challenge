@@ -17,9 +17,9 @@ export default function Hero() {
         </div>
         <Carousel.Caption>
           <div className='CarouselInfo' >
-            <h3 className='CarouselSubTitle' >Subtitle product</h3>
-            <h2 className='CarouselTitle' >Product title or advertisement</h2>
-            <p className='CarouselText' >15% discount on shipping this week</p>
+            <h3 className='CarouselSubTitle' >Terra Farm</h3>
+            <h2 className='CarouselTitle' >without intermediaries the best of the field in your hands</h2>
+            <p className='CarouselText' >15% discount  this week</p>
             <LinkRouter to="/products">
               <button className='CarouselButton'>Go to Shop</button>
             </LinkRouter>
@@ -32,9 +32,9 @@ export default function Hero() {
         </div>
         <Carousel.Caption>
           <div className='CarouselInfo' >
-            <h3 className='CarouselSubTitle' >Subtitle product</h3>
-            <h2 className='CarouselTitle' >Product title or advertisement</h2>
-            <p className='CarouselText' >15% discount on shipping this week</p>
+            <h3 className='CarouselSubTitle' >Terra Farm</h3>
+            <h2 className='CarouselTitle' >without intermediaries the best of the field in your hands</h2>
+            <p className='CarouselText' >15% discount this week</p>
             <LinkRouter to="/products">
               <button className='CarouselButton'>Go to Shop</button>
             </LinkRouter>
@@ -47,9 +47,9 @@ export default function Hero() {
         </div>
         <Carousel.Caption>
           <div className='CarouselInfo' >
-            <h3 className='CarouselSubTitle' >Subtitle product</h3>
-            <h2 className='CarouselTitle' >Product title or advertisement</h2>
-            <p className='CarouselText' >15% discount on shipping this week</p>
+            <h3 className='CarouselSubTitle' >Terra Farm</h3>
+            <h2 className='CarouselTitle' >without intermediaries the best of the field in your hands</h2>
+            <p className='CarouselText' >15% discount  this week</p>
             <LinkRouter to="/products">
               <button className='CarouselButton'>Go to Shop</button>
             </LinkRouter>
