@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import Swal from 'sweetalert2'
 import './Carrito.css'
 
-import { DeleteProduct, ClearCarrito } from '../../features/slices/carritoSlice'
+import { DeleteProduct,ClearCarrito } from '../../features/slices/carritoSlice'
 
 export default function Carrito() {
 
@@ -38,11 +38,14 @@ export default function Carrito() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(ClearCarrito(  ))
+  
 
-    
     if (currentCarrito.length > 0) {
       console.log('entro aca')
+
+      dispatch(ClearCarrito(  ))
+
+      sendInfo(ClearCarrito())
 
       Swal.fire({
         icon: 'success',
@@ -58,6 +61,7 @@ export default function Carrito() {
         confirmButtonText: 'ok'
       })
     }
+    
 
   }
   const removeElem = (e) => {
