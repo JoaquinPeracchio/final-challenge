@@ -87,10 +87,10 @@ export default function Carrito() {
     <div className='cart-page'>
       <div className='cart-container'>
         {currentCarrito.map(showCarrito)}
-        <h5 className='total-compra'>Total de Compra: {priceArr.map(item => item.price).reduce((prev, curr) => prev + curr, 0)}</h5>
+        <h5 className='total-compra'>Total: {priceArr.map(item => item.price).reduce((prev, curr) => prev + curr, 0)}</h5>
         {/* <button onClick={saveElement}>save</button>
       <button onClick={clearElement}>Clear</button> */}
-        <button className='botons finalizar-compra' onClick={handleSubmit}>Finalizar Compra</button>
+        <button className='botons finalizar-compra' onClick={handleSubmit}>Finalize Purchase</button>
       </div>
     </div>
   )
