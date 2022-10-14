@@ -29,7 +29,7 @@ const [edit,setEdit]=useState()
 
   },[elemento.id,elemento.userId,price,stock,type])
 
-  console.log(edit)
+  // console.log(edit)
 
 
 

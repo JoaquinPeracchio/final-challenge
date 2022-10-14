@@ -100,7 +100,7 @@ export const Productos = () => {
             </div>
                 
 
-                  {!state && !search && elem?<div className='ProductUser'><h1 className='ProductH1'>all products</h1></div>:''}  
+                  {!state && !search && elem?<div className='ProductUser'><h1 className='ProductH1'>All products</h1></div>:''}  
                 
                 <div className="producs-container">
                     {!state && !search &&elem?elem.map(cardBootstrap):''}

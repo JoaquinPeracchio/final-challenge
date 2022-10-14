@@ -17,7 +17,7 @@ import ModalEdit from "./ModalEdit/ModalEdit"
 
      } = useGetProductsUserQuery('6345fbd9bb7e879c60015fe8')
 
-     console.log(elem)
+    //  console.log(elem)
 
      const handleClose = () => {
          setInput(false)
@@ -46,7 +46,7 @@ import ModalEdit from "./ModalEdit/ModalEdit"
     //  quantity :quantity,
     //  date: dayMonth
 
-     console.log(idel)
+    //  console.log(idel)
      let productShow = (product) => (
          <div className="productUser">
             <hr></hr>

@@ -5,17 +5,17 @@ import { AddCarrito, UpdateCarrito } from '../../features/slices/carritoSlice'
 import './Details.css'
 
 export default function Details({ props, onclose }) {
-  console.log(props)
-  console.log(onclose)
+  // console.log(props)
+  // console.log(onclose)
   const dispatch = useDispatch()
   const select = useSelector(state => state.carrito)
   const [populater, setPopulate] = useState(1)
   const [popularity, setPopularity] = useState()
-  console.log(populater)
+  // console.log(populater)
 
 
   const handleContext = (e) => {
-    console.log(e)
+    // console.log(e)
     let obj = {
       id: props.id,
       image: props.image,
