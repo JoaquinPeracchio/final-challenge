@@ -39,7 +39,7 @@ export default function Details({ props, onclose }) {
 
   return (
     <div className='Container'>
-      {/* {elem?  */}
+
       <div className='ContainerBody'>
 
         <div className='ContainerImg'>
@@ -47,10 +47,9 @@ export default function Details({ props, onclose }) {
         </div>
         <div className='information'>
           <h4 className='item-title'>{props.name}</h4>
-          {/* <h3>provider : {props.user.name}</h3>
-            <h4>Popularity User{popularity}</h4>  */}
+
           <h6>Description :{props.description}</h6>
-          <h6>CurrentState :{props.currenState}</h6>
+          
           <h6>Type: {props.type}</h6>
           <h6>Variety: {props.variety}</h6>
           <h6>quantity: </h6>
