@@ -14,7 +14,12 @@ const ApiMethod = createApi({
 
   endpoints: (builder) => ({
 
-    GetAllProducts: builder.query({ query: () => `/products/` }),
+    getAllProducts: builder.query({ query: (params) => {
+      console.log(params)
+      
+    return  `/products?product=${params}`
+  
+  } }),
 
     GetProductsUser: builder.query({ query: (id) => `/products/user/${id}` }),
 
