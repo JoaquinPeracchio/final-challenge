@@ -18,7 +18,7 @@ export default function Hero() {
         <Carousel.Caption>
           <div className='CarouselInfo' >
             <h3 className='CarouselSubTitle' >Terra Farm</h3>
-            <h2 className='CarouselTitle' >without intermediaries the best of the field in your hands</h2>
+            <h2 className='CarouselTitle' >Without intermediaries the best of the field in your hands</h2>
             <p className='CarouselText' >15% discount  this week</p>
             <LinkRouter to="/products">
               <button className='CarouselButton'>Go to Shop</button>
@@ -33,7 +33,7 @@ export default function Hero() {
         <Carousel.Caption>
           <div className='CarouselInfo' >
             <h3 className='CarouselSubTitle' >Terra Farm</h3>
-            <h2 className='CarouselTitle' >without intermediaries the best of the field in your hands</h2>
+            <h2 className='CarouselTitle' >Without intermediaries the best of the field in your hands</h2>
             <p className='CarouselText' >15% discount this week</p>
             <LinkRouter to="/products">
               <button className='CarouselButton'>Go to Shop</button>
@@ -48,7 +48,7 @@ export default function Hero() {
         <Carousel.Caption>
           <div className='CarouselInfo' >
             <h3 className='CarouselSubTitle' >Terra Farm</h3>
-            <h2 className='CarouselTitle' >without intermediaries the best of the field in your hands</h2>
+            <h2 className='CarouselTitle' >Without intermediaries the best of the field in your hands</h2>
             <p className='CarouselText' >15% discount  this week</p>
             <LinkRouter to="/products">
               <button className='CarouselButton'>Go to Shop</button>
