@@ -13,6 +13,7 @@ export default function Carrito() {
   const [SellMut] = useSellProductMutation()
   const [BuyMut] = useBuyProductMutation()
   const [price, setPrice] = useState(0)
+  const dispatch = useDispatch()
 
   let priceArr = []
 
@@ -23,7 +24,7 @@ export default function Carrito() {
 
 
   const currentCarrito = useSelector(state => state.carrito)
-  console.log(currentCarrito)
+  // console.log(currentCarrito)
   const sendInfo = useDispatch()
 
 
@@ -68,21 +69,21 @@ export default function Carrito() {
   }
   const removeElem = (e) => {
     console.log(e)
-    sendInfo(DeleteProduct(e))
+    dispatch(DeleteProduct(e))
   }
 
   let showCarrito = (item) => (
     <div onLoad={() => clearElement(item.price)}>
       <hr></hr>
       <div className='card-cart'>
-        <p className='peso-letra'>#
+        <p className='peso-letra hash'>#
           {priceArr.push({
             idProd: item.id,
             name: item.name,
             image: item.image,
             quantity: item.quantity,
             price: item.price * item.quantity
-          })}</p> <h5 className='peso-letra'>Product:{item.name}</h5>
+          })}</p> <h6 className='peso-letra product-title'>Product:{item.name}</h6>
         <div className='image-cart-container'>
           <img className="cart-image" src={item.image}></img>
         </div>
@@ -104,7 +105,7 @@ export default function Carrito() {
         <h5 className='total-compra'>Total de Compra: {priceArr.map(item => item.price).reduce((prev, curr) => prev + curr, 0)}</h5>
         {/* <button onClick={saveElement}>save</button>
       <button onClick={clearElement}>Clear</button> */}
-        <button className='botons' onClick={handleSubmit}>Finalizar Compra</button>
+        <button className='botons finalizar-compra' onClick={handleSubmit}>Finalizar Compra</button>
       </div>
     </div>
   )

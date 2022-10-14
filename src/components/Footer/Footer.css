@@ -5,8 +5,8 @@
     height: 20vh;
 }
 .marca{
-    width: 250px;
-    height: 100px;
+    width: 200px;
+    margin: 20px;
 }
 .footer-hero{
     display: flex;
@@ -14,8 +14,7 @@
     
     justify-content: space-around;
     align-items: center;
-    background: rgb(218,83,9);
-    background: linear-gradient(295deg, rgba(218,83,9,0.8422273781902552) 16%, rgba(240,121,5,1) 43%, rgba(238,144,12,1) 67%, rgba(246,173,52,1) 84%);
+    background-color: #86ba09;
 }
 .footer-links-nav{
     display: flex;
@@ -55,7 +54,7 @@
         
         justify-content: space-around;
         align-items: center;
-        background-color: #dc9a4fc4;
+        /* background-color: #dc9a4fc4; */
     }
     .footer-links-nav{
         font-size: 20px;
