@@ -25,7 +25,7 @@ const FooterNav = () => {
     <>
     <div>
       {navegacion.map((obj) => 
-      <LinkRouter className="links" to={obj.to}>
+      <LinkRouter className="links" to={obj.to} key={obj.to}>
         <button type="" className="button-navfooter">{obj.name}</button>
         </LinkRouter>
       )}

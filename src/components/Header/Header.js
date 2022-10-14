@@ -21,11 +21,11 @@ export default function Header() {
 
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
-    console.log(openMenu)
+    // console.log(openMenu)
   }
   const toggleCart = () => {
     openCart ? setOpenCart(false) : setOpenCart(true)
-    console.log(openCart)
+    // console.log(openCart)
   }
 
 

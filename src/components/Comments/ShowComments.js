@@ -19,7 +19,7 @@ export default function ShowComments() {
     // }, [])
     const { data: comment } = useGetCommentByIdQuery("633c5cf9bfdb13bdc89c4c44")
 
-    console.log(comment)
+    // console.log(comment)
     const selectRol = () => {
         if (!vendedor) {
             setRol("Vendedor")

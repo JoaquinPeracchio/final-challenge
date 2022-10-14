@@ -49,45 +49,6 @@ export default function Profile() {
 
     const { data: products } = useGetProductsUserQuery(userID)
 
-    const sells = [
-        {
-            "user": {
-                "name": "Lucas",
-                "photo": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY2Njc5NDYzOTQ4NDYxNDA4/michael-jordan.jpg"
-            },
-            "product": {
-                "name": "Lettuce",
-                "variety": "Coral Lettuce",
-                "photo": "https://urbangrow.today/wp-content/uploads/2021/06/GreenCoralLettuce.png",
-                "stock": "20"
-            }
-        },
-        {
-            "user": {
-                "name": "Lucas",
-                "photo": "https://images.heb.com/is/image/HEBGrocery/000583329?fit=constrain,1&wid=800&hei=800&fmt=jpg&qlt=85,0&resMode=sharp2&op_usm=1.75,0.3,2,0"
-            },
-            "product": {
-                "name": "Watermelon",
-                "variety": "Seedless",
-                "photo": "https://urbangrow.today/wp-content/uploads/2021/06/GreenCoralLettuce.png",
-                "stock": "10"
-            }
-        }, {
-            "user": {
-                "name": "Leonardo",
-                "photo": "https://images.heb.com/is/image/HEBGrocery/000583329?fit=constrain,1&wid=800&hei=800&fmt=jpg&qlt=85,0&resMode=sharp2&op_usm=1.75,0.3,2,0"
-            },
-            "product": {
-                "name": "Watermelon",
-                "variety": "Seedless",
-                "photo": "https://urbangrow.today/wp-content/uploads/2021/06/GreenCoralLettuce.png",
-                "stock": "40"
-            }
-        }
-    ]
-
-
 
 
     console.log(products)

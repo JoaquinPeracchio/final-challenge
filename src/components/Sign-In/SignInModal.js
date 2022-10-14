@@ -103,7 +103,7 @@ export default function SignInModal() {
                         <form onSubmit={saveDataSignIn} className='ModalForm'>
                             <input onChange={captureData} name='mail' className='ModalFormInput' placeholder='Email' type='text' required />
                             <input onChange={captureData} name='password' className='ModalFormInput' placeholder='Password' type='password' required />
-                            <button className='ModalFormButton'>Sing In</button>
+                            <button className='ModalFormButton'>Sign In</button>
                         </form>
                         <div className="ModalBodyExtraContainer">
                             <p className="ModalBodyExtraButton" onClick={handleShowModalSignUp}>No account? Create one here</p>
@@ -132,11 +132,11 @@ export default function SignInModal() {
                     <div className="ModalBodyContainer">
                         <form className='ModalForm' onSubmit={saveData}>
                             <input onChange={captureData} className='ModalFormInput' name="name" type='text' placeholder="Name" required />
-                            <input onChange={captureData} className='ModalFormInput' name="lastName" type='text' placeholder="LastName" required />
+                            <input onChange={captureData} className='ModalFormInput' name="lastName" type='text' placeholder="Last Name" required />
                             <input onChange={captureData} className='ModalFormInput' name="photo" type='text' placeholder="Photo URL" required />
-                            <input onChange={captureData} className='ModalFormInput' name="mail" type='text' placeholder="Mail" required />
+                            <input onChange={captureData} className='ModalFormInput' name="mail" type='text' placeholder="Email" required />
                             <input onChange={captureData} className='ModalFormInput' name="password" type='password' placeholder="Password" required />
-                            <input onChange={captureData} className='ModalFormInput' name="adress" type='text' placeholder="Adress" required />
+                            <input onChange={captureData} className='ModalFormInput' name="adress" type='text' placeholder="Address" required />
                             <input onChange={captureData} className='ModalFormInput' name="phone" type='text' placeholder="Phone" required />
                             <button className='ModalFormButton'>Sign Up</button>
                         </form>

@@ -41,7 +41,7 @@ export default function Carrito() {
   
 
     if (currentCarrito.length > 0) {
-      console.log('entro aca')
+      // console.log('entro aca')
 
       dispatch(ClearCarrito(  ))
 
@@ -65,7 +65,7 @@ export default function Carrito() {
 
   }
   const removeElem = (e) => {
-    console.log(e)
+    // console.log(e)
     dispatch(DeleteProduct(e))
   }
 

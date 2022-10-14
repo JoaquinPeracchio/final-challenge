@@ -19,7 +19,7 @@ export default function WebHeaderButton() {
             setOpen(true);
         }
     };
-    console.log(open)
+    // console.log(open)
 
     const clearlocal = () => {
         singOut(User.mail)

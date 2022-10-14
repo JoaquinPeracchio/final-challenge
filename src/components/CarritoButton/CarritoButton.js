@@ -10,7 +10,7 @@ export const CarritoButton = () => {
     const [state,setState]=useState(false)
     
     const data = useSelector(state=>state.carrito)
-    console.log(data)
+    // console.log(data)
     //Productos de prueba
     
     const handleClose =()=>{
