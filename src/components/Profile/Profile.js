@@ -165,7 +165,7 @@ export default function Profile() {
                     <Accordion.Item>
                         <Accordion.Header>Completed purchases</Accordion.Header>
                         <Accordion.Body>
-                            ninguna compra realizada
+                            <h3>No purchase made</h3>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
