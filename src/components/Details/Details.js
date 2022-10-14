@@ -54,7 +54,7 @@ export default function Details({ props, onclose }) {
           <h6>Type: {props.type}</h6>
           <h6>Variety: {props.variety}</h6>
           <h6>quantity: </h6>
-          <input className='input-detail' type='number' id={props.id} maxLength={10} minLength={1} onChange={(e) => setPopulate(e.target.value)} ></input>
+          <input className='input-detail' type='number' id={props.id} max={10} min={1} onChange={(e) => setPopulate(e.target.value)} ></input>
           <button className='CarritoButton' onClick={handleContext}>Send Carrito</button>
         </div>
         <div className='CloseButton'>
