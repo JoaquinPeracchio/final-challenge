@@ -30,7 +30,6 @@ export default function Details({ props, onclose }) {
 
     }
     dispatch(AddCarrito(obj))
-    alert('successfully')
     onclose()
   }
 
