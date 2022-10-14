@@ -48,7 +48,7 @@ export default function Profile() {
 
     const { data: products } = useGetProductsUserQuery(userID)
 
-    console.log(rating)
+    // console.log(rating)
     const closeEdit = () => {
         setEdit(false)
     }
