@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Swal from 'sweetalert2'
 import { useCreateProductMutation } from '../../features/actions/ApiMethod'
-
+import './Create.css'
 
 export default function CreateProductModal() {
 
@@ -59,7 +59,6 @@ export default function CreateProductModal() {
             variety: variety,
             quantitymin: quantity,
             stock: stock,
-            date: dayMonth,
             price: price,
             photo: photo,
 
@@ -126,7 +125,7 @@ export default function CreateProductModal() {
 
                         <h6 className="createH4">User : Aguh   </h6>
                         <p >Image  </p>
-                        <input type='file' onChange={handlePhoto}></input>
+                        <input type='text' onChange={handlePhoto}></input>
                         <p >Price </p>
                         <input type='number' onChange={handlePrice}></input>
 
@@ -142,17 +141,14 @@ export default function CreateProductModal() {
                         </select>
                         <p>Date : {dayMonth}</p>
 
-                        <div className='createButtons'>
-
-                            <button onClick={handleSubmit} className='save'>Save</button>
-                        </div>
+                        
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleSubmit}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
