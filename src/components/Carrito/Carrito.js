@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 import './Carrito.css'
 import { useSellProductMutation, useBuyProductMutation } from '../../features/actions/ApiMethod'
 
-import { DeleteProduct, } from '../../features/slices/carritoSlice'
+import { DeleteProduct,ClearCarrito } from '../../features/slices/carritoSlice'
 
 export default function Carrito() {
 
@@ -40,20 +40,7 @@ export default function Carrito() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (currentCarrito.length != null) {
-      console.log('entro aca')
-      SellMut(priceArr)
-        .unwrap()
-        .then(() => { console.log('seller') })
-        .then((error) => {
-          console.log(error)
-        })
-      BuyMut(priceArr)
-        .unwrap()
-        .then(() => { console.log('buyer') })
-        .then((error) => {
-          console.log(error)
-        })
+    sendInfo(ClearCarrito())
 
       Swal.fire({
         icon: 'success',
@@ -61,9 +48,7 @@ export default function Carrito() {
         text: 'we will send an email with the details of your purchase',
         confirmButtonText: 'ok'
       })
-    } else {
-      alert('your carrito its empty')
-    }
+    
 
   }
   const removeElem = (e) => {
