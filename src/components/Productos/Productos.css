@@ -10,7 +10,7 @@
 
 .card-product {
     margin: 10px;
-    height: 315px;
+    min-height: 365px;
     min-width: 290px;
     display: flex;
     align-items: center;

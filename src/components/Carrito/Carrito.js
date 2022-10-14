@@ -2,16 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 
+
 import Swal from 'sweetalert2'
 import './Carrito.css'
-import { useSellProductMutation, useBuyProductMutation } from '../../features/actions/ApiMethod'
 
-import { DeleteProduct, } from '../../features/slices/carritoSlice'
+import { DeleteProduct, ClearCarrito } from '../../features/slices/carritoSlice'
 
 export default function Carrito() {
 
-  const [SellMut] = useSellProductMutation()
-  const [BuyMut] = useBuyProductMutation()
   const [price, setPrice] = useState(0)
   const dispatch = useDispatch()
 
@@ -40,21 +38,11 @@ export default function Carrito() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    dispatch(ClearCarrito(  ))
 
-    if (currentCarrito.length != null) {
+    
+    if (currentCarrito.length > 0) {
       console.log('entro aca')
-      SellMut(priceArr)
-        .unwrap()
-        .then(() => { console.log('seller') })
-        .then((error) => {
-          console.log(error)
-        })
-      BuyMut(priceArr)
-        .unwrap()
-        .then(() => { console.log('buyer') })
-        .then((error) => {
-          console.log(error)
-        })
 
       Swal.fire({
         icon: 'success',
@@ -63,7 +51,12 @@ export default function Carrito() {
         confirmButtonText: 'ok'
       })
     } else {
-      alert('your carrito its empty')
+       Swal.fire({
+        icon: 'error',
+        title: 'failed purchase',
+        text: 'Your cart is empty',
+        confirmButtonText: 'ok'
+      })
     }
 
   }
@@ -89,11 +82,11 @@ export default function Carrito() {
         </div>
         <div className='cart-details'>
           <p className='peso-letra fondo'>Price : ${item.price * item.quantity}</p>
-          <p className='peso-letra fondo'> KG: {item.quantitymin}</p>
-          <p className='peso-letra fondo'> quantity {item.quantity}</p>
+          <p className='peso-letra fondo'> KG: {item.quantity}</p>
+          <p className='peso-letra fondo'>min quantity: 1</p>
           <button className='botons x' value={item.id} onClick={(e) => removeElem(e.target.value)}>X</button>
         </div>
-      </div>
+      </div> 
       <hr></hr>
     </div>
   )

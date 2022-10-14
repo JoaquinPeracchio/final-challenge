@@ -16,7 +16,6 @@ export const Productos = () => {
         refetch: comeback
     } = useGetAllProductsQuery()
 
-    console.log(elem)
     const handleClose = () => {
         setState(false)
     }
@@ -39,6 +38,8 @@ export const Productos = () => {
             </button>
             <div className='body-card-container'>
                 <div className='name-product'>{items.name}</div>
+                <div>{items.variety}</div>
+                <div className='user-name'>Producer: {items.user.name}</div>
                 <div className='card-body'> ${items.price}.00</div>
                 <button className='add-carrito-btn' onClick={() => setCarrito({ id: items._id, image: items.photo, name: items.name, variety: items.variety, quantitymin: items.quantitymin, price: items.price, type: items.type, description: items.description, currentState: items.currentState, quantity: 1 })} style={{ border: 'none', cursor: 'pointer' }}>Add to cart</button>
             </div>

@@ -33,14 +33,14 @@ export const carritoSlice = createSlice({
 
             }
         },
-        ClearCarrito: (state) => {
-
+        ClearCarrito: (state, payload) => {
+            state = payload
         }
 
     }
 })
 
-export const { AddCarrito, DeleteProduct, UpdateCarrito } = carritoSlice.actions
+export const { AddCarrito, DeleteProduct, UpdateCarrito, ClearCarrito } = carritoSlice.actions
 export default carritoSlice.reducer
 
 
