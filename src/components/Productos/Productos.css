@@ -28,6 +28,10 @@
     min-width: 288px;
     max-height: 210px;
     border-radius: 8px 8px 0px 0px;
+    object-fit: contain;
+}
+.img-container-product{
+    background-color: white;
 }
 
 .welcome-container {

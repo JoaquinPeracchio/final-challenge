@@ -2,6 +2,7 @@
     object-fit: cover;
     height: 90vmin;
     width: 100%;
+    filter: brightness(60%) contrast(106%);
 }
 .CarouselInfo{
     padding: 10px;

@@ -52,7 +52,7 @@ export default function ResponsiveHeaderNav() {
 
                         <div className="HeaderNavResponsiveButtonContainer">
                             <button className="HeaderNavResponsiveButton">
-                                <LinkRouter className="HeaderNavResponsiveButtonLink" to="/user">Profile</LinkRouter>
+                                <LinkRouter className="HeaderNavResponsiveButtonLink" to="/profile">Profile</LinkRouter>
                             </button>
                             <button className="HeaderNavResponsiveButton" onClick={clearlocal}>SignOut</button>
                         </div>
