@@ -1,4 +1,4 @@
-
+import "./ProductsProfile.css"
 
 export default function ProductsProfile(props) {
 
@@ -7,8 +7,14 @@ export default function ProductsProfile(props) {
     console.log(props.data)
 
     return (
-        <>
-            <li>{product.name}</li>
-        </>
+        <li>
+            <img className="asd" src={product.photo} />
+            <p>{product.variety}</p>
+            <p>{product.name}</p>
+            <p>{product.type}</p>
+            <p>${product.price} xKG</p>
+            <p>{product.stock}</p>
+            <button>delete product</button>
+        </li>
     );
 }
