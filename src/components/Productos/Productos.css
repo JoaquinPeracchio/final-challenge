@@ -130,4 +130,20 @@
     flex-direction: column;
     align-items: center;
 }
+.ProductUser{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(208, 220, 192) ;
+    padding: 10px;
+
+}
+.ProductH1{
+    
+    font-style: italic;
+    font-size: 30px;
+    color: rgb(38, 62, 38);
+    
+
+}
 
