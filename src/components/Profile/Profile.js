@@ -18,6 +18,34 @@ export default function Profile() {
     const userID = User._id
     const rating = User.popularity
 
+    const Star = <img className='estrellita' src='https://img.icons8.com/color/344/christmas-star.png' />
+    const EmptyStar = <img className='estrellita' src='https://img.icons8.com/color/344/star--v1.png' />
+    const ceroEstrellas = <div>{EmptyStar}{EmptyStar}{EmptyStar}{EmptyStar}{EmptyStar}</div>
+    const unaEstrella = <div>{Star}{EmptyStar}{EmptyStar}{EmptyStar}{EmptyStar}</div>
+    const dosEstrellas = <div>{Star}{Star}{EmptyStar}{EmptyStar}{EmptyStar}</div>
+    const tresEstrellas = <div>{Star}{Star}{Star}{EmptyStar}{EmptyStar}</div>
+    const cuatroEstrellas = <div>{Star}{Star}{Star}{Star}{EmptyStar}</div>
+    const cincoEstrellas = <div>{Star}{Star}{Star}{Star}{Star}</div>
+
+    function estrellas(popularidad) {
+        let galaxia = []
+        if (popularidad == 0) {
+            galaxia = ceroEstrellas
+        } else if (popularidad == 1) {
+            galaxia = unaEstrella
+        } else if (popularidad == 2) {
+            galaxia = dosEstrellas
+        } else if (popularidad == 3) {
+            galaxia = tresEstrellas
+        } else if (popularidad == 4) {
+            galaxia = cuatroEstrellas
+        } else if (popularidad >= 5) {
+            galaxia = cincoEstrellas
+        };
+
+        return galaxia;
+    }
+
     const { data: products } = useGetProductsUserQuery(userID)
 
     console.log(rating)
@@ -46,16 +74,10 @@ export default function Profile() {
                 </div>
             </div>
             <div className='ProfileContainer'>
-                <h4>Rating</h4>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum.
+                <h4>Actual Rating:</h4>
+                <div>{estrellas(User.popularity)}</div>
                 <Accordion>
-                    <Accordion.Item eventKey="0">
+                    <Accordion.Item>
                         <Accordion.Header>Completed sales</Accordion.Header>
                         <Accordion.Body>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -69,7 +91,7 @@ export default function Profile() {
                     </Accordion.Item>
                 </Accordion>
                 <Accordion>
-                    <Accordion.Item eventKey="1">
+                    <Accordion.Item>
                         <Accordion.Header>Completed purchases</Accordion.Header>
                         <Accordion.Body>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -83,7 +105,7 @@ export default function Profile() {
                     </Accordion.Item>
                 </Accordion>
                 <Accordion>
-                    <Accordion.Item eventKey="2">
+                    <Accordion.Item>
                         <Accordion.Header>Products on sale</Accordion.Header>
                         <Accordion.Body>
                             <ul className='ProductProfileContainer'>
@@ -97,14 +119,3 @@ export default function Profile() {
         </div>
     )
 }
-
-{/* <header>
-<div>Foto y nombre</div>
- <button onClick={()=>setEdit(true)} >Edit Product</button>
- <button onClick={()=>setCreate(true)} >Create New Product</button>
- <div>Ganacias</div>
- <div>Num Ventas</div>
- <div>Popularity</div>
-</header>
-{edit?<EventProduct/>:''} 
-{create?<ModalCreate onClose={closeCreate}/>:''}  */}
