@@ -63,14 +63,21 @@ export const Productos = () => {
     return (
         <div>
             <input className="product-filter" type="text" onChange={e => setSearch(e.target.value)} placeholder="Search product"></input>
-            {!state && !search && elem ? <div className='ProductUser'><h2 className='ProductH1'>Product of the most popular users</h2></div> : ''}
+            {!state && !search && elem ? <div className='ProductUser'><h2 className='ProductH1'>Product of the most popular sellers</h2></div> : ''}
             <div className="producs-container">
 
-                {!state && !search && elem ? elem.filter(item => item.user.popularity > 2).map(cardBootstrap) : ''}
+                {!state && !search && elem ? elem.filter(item => item.user.popularity > 3).map(cardBootstrap) : ''}
                 {!state && search && elem ? elem.map(cardBootstrap) : ''}
                 {state ? <Details props={product} onclose={handleClose} /> : ''}
 
             </div>
+                <div className='ProductUser'>
+
+                  {!state && !search && elem?<h1 className='ProductH1'>all products</h1>:''}  
+                </div>
+                <div className="producs-container">
+                    {!state && !search &&elem?elem.map(cardBootstrap):''}
+                </div>
         </div>
     )
 }
