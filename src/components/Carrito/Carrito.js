@@ -70,7 +70,7 @@ export default function Carrito() {
   }
 
   let showCarrito = (item) => (
-    <div onLoad={() => clearElement(item.price)}>
+    <div className='maxContainer' onLoad={() => clearElement(item.price)}>
       <hr></hr>
       <div className='card-cart'>
         <p className='peso-letra hash'>#
