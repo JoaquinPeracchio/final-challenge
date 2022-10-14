@@ -67,7 +67,7 @@ export default function ModalCreate({onClose }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(edit)
+    // console.log(edit)
     //mandarlo al controlador create
 
      if (edit.name.length < 3) {
