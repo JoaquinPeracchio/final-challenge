@@ -85,7 +85,7 @@ export default function Carrito() {
           <img className="cart-image" src={item.image}></img>
         </div>
         <div className='cart-details'>
-          <p className='peso-letra fondo'>Price : ${item.price * item.quantity}</p>
+          <p className='peso-letra fondo'>Price: ${item.price * item.quantity}</p>
           <p className='peso-letra fondo'> KG: {item.quantity}</p>
           <p className='peso-letra fondo'>min quantity:1</p>
           <button className='botons x' value={item.id} onClick={(e) => removeElem(e.target.value)}>X</button>
