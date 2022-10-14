@@ -18,6 +18,7 @@ export const carritoSlice = createSlice({
 
             }
         },
+
         DeleteProduct: (state, action) => {
             const remove = state.find(item => item.id === action.payload)
             if (remove) {
@@ -33,14 +34,19 @@ export const carritoSlice = createSlice({
 
             }
         },
-        ClearCarrito: (state) => {
+
+        ClearCarrito : (state) =>{
+            state.splice(0,state.length)
+          
 
         }
 
     }
 })
 
-export const { AddCarrito, DeleteProduct, UpdateCarrito } = carritoSlice.actions
+
+export const { AddCarrito,DeleteProduct,UpdateCarrito,ClearCarrito} = carritoSlice.actions
+
 export default carritoSlice.reducer
 
 
