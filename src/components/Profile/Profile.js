@@ -16,10 +16,11 @@ export default function Profile() {
     const [create, setCreate] = useState(false)
     let User = JSON.parse(localStorage.getItem("useriInfo"))
     const userID = User._id
+    const rating = User.popularity
 
     const { data: products } = useGetProductsUserQuery(userID)
 
-    console.log(products)
+    console.log(rating)
     const closeEdit = () => {
         setEdit(false)
     }
@@ -45,10 +46,17 @@ export default function Profile() {
                 </div>
             </div>
             <div className='ProfileContainer'>
-                <h4>rating</h4>
+                <h4>Rating</h4>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                culpa qui officia deserunt mollit anim id est laborum.
                 <Accordion>
                     <Accordion.Item eventKey="0">
-                        <Accordion.Header>Ventas</Accordion.Header>
+                        <Accordion.Header>Completed sales</Accordion.Header>
                         <Accordion.Body>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -59,8 +67,10 @@ export default function Profile() {
                             culpa qui officia deserunt mollit anim id est laborum.
                         </Accordion.Body>
                     </Accordion.Item>
+                </Accordion>
+                <Accordion>
                     <Accordion.Item eventKey="1">
-                        <Accordion.Header>Compras</Accordion.Header>
+                        <Accordion.Header>Completed purchases</Accordion.Header>
                         <Accordion.Body>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -71,10 +81,12 @@ export default function Profile() {
                             culpa qui officia deserunt mollit anim id est laborum.
                         </Accordion.Body>
                     </Accordion.Item>
+                </Accordion>
+                <Accordion>
                     <Accordion.Item eventKey="2">
-                        <Accordion.Header>Productos</Accordion.Header>
+                        <Accordion.Header>Products on sale</Accordion.Header>
                         <Accordion.Body>
-                            <ul>
+                            <ul className='ProductProfileContainer'>
                                 {products?.map(products => <ProductsProfile data={products} />)}
                             </ul>
                         </Accordion.Body>

@@ -1,3 +1,21 @@
-.asd{
-    height: 100px;
+.ProductProfileContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+.ProductProfile{
+    margin: 10px;
+    min-height: 365px;
+    min-width: 290px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 8px;
+}
+.ProductButtonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px;
 }
