@@ -10,6 +10,7 @@ import DeleteUserModal from '../User/DeleteUserModal'
 import ProductsProfile from './ProductsProfile';
 import { useGetProductsUserQuery } from '../../features/actions/ApiMethod';
 import "./Profile.css"
+import "./Sells.css"
 
 export default function Profile() {
     const [edit, setEdit] = useState(false)
@@ -48,7 +49,9 @@ export default function Profile() {
 
     const { data: products } = useGetProductsUserQuery(userID)
 
-    // console.log(rating)
+
+
+    console.log(products)
     const closeEdit = () => {
         setEdit(false)
     }
@@ -80,13 +83,42 @@ export default function Profile() {
                     <Accordion.Item>
                         <Accordion.Header>Completed sales</Accordion.Header>
                         <Accordion.Body>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
+                            <div className='Sell'>
+                                <div className='comprador'>
+                                    <img className='foto' src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY2Njc5NDYzOTQ4NDYxNDA4/michael-jordan.jpg" />
+                                    <div className='nombre'>Lucas</div>
+                                </div>
+                                <div className='producto'>
+                                    <img className='foto' src="https://urbangrow.today/wp-content/uploads/2021/06/GreenCoralLettuce.png" />
+                                    <div className='nombre'>Lettuce</div>
+                                    <div className='texto'>Coral Lettuce</div>
+                                    <div className='texto'>Quantity: 20kg</div>
+                                </div>
+                            </div>
+                            <div className='Sell'>
+                                <div className='comprador'>
+                                    <img className='foto' src="https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTY2Njc5NDYzOTQ4NDYxNDA4/michael-jordan.jpg" />
+                                    <div className='nombre'>Lucas</div>
+                                </div>
+                                <div>
+                                    <img className='foto' src="https://urbangrow.today/wp-content/uploads/2021/06/GreenCoralLettuce.png" />
+                                    <div className='nombre'>Watermelon</div>
+                                    <div className='texto'>Seedless</div>
+                                    <div className='texto'>Quantity: 10kg</div>
+                                </div>
+                            </div>
+                            <div className='Sell'>
+                                <div className='comprador'>
+                                    <img className='foto' src="https://www.notigatos.es/wp-content/uploads/2017/06/gato-con-la-boca-abierta.jpg" />
+                                    <div className='nombre' >Lonardo</div>
+                                </div>
+                                <div>
+                                    <img className='foto' src="https://urbangrow.today/wp-content/uploads/2021/06/GreenCoralLettuce.png" />
+                                    <div className='nombre'>Watermelon</div>
+                                    <div className='texto'>Seedless</div>
+                                    <div className='texto'>Quantity: 40kg</div>
+                                </div>
+                            </div>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
@@ -94,13 +126,7 @@ export default function Profile() {
                     <Accordion.Item>
                         <Accordion.Header>Completed purchases</Accordion.Header>
                         <Accordion.Body>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
+                            <h3>No purchase made</h3>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
