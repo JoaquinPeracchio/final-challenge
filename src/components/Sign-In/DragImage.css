@@ -1,0 +1,84 @@
+/* input[type="file"] {
+    display: none;
+} */
+.DragImageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.DragImagePreview{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.DragImageFormContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0 0 0;
+    gap: 5px;
+}
+.DragImageIcon{
+    height: 16px;
+    filter: invert(100);
+}
+.DragImageUrlButton{
+    height: 36px;
+    font-size: 16px;
+    padding: 0 16px;
+    font-weight: 600;
+    background-color: #86ba09;
+    color: #ffffff;
+    border-radius: 0px 8px 8px 0;
+    border: none;
+}
+.DragImageUrlInput{
+    padding: 5px;
+    width: 348px;
+    font-size: 16px;
+    border-width: 1px;
+    border-color: #85ba095f;
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-radius: 8px 0px 0px 8px;
+    text-shadow: 0px 0px 0px rgb(0 0 0 / 75%);
+}
+.DragImageUrlInput:focus{
+    outline: 1px solid #85ba09;
+}
+.DragImageText{
+    padding: 0;
+    margin: 0;
+}
+
+
+.file-input__input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.file-input__label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    font-size: 16px;
+    padding: 0 16px;
+    font-weight: 600;
+    background-color: #86ba09;
+    color: #ffffff;
+    border-radius: 8px;
+    border: none;
+}
+
+
+    @media (max-width: 768px){
+        .DragImageUrlInput {
+            width: calc(100% - 50px);
+        }
+    }

@@ -1,16 +1,46 @@
 import React, { useState } from "react"
+import axios from "axios"
 import User from "../../assets/icons/user.png"
+import Check from '../../assets/icons/check.png'
+import Upload from '../../assets/icons/upload.png'
 import Button from 'react-bootstrap/Button';
 import Modal from "react-bootstrap/Modal";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import { usePostUserMutation } from '../../features/actions/userApi'
 import { usePostUserSingInMutation } from '../../features/actions/userApi'
 import "./SignInModal.css"
+import "./DragImage.css"
 
 export default function SignInModal() {
 
-    const [modalState, setModalState] = useState("close");
+    const [image, setImage] = useState("");
+    const [url, setUrl] = useState(User);
 
+    const api = "https://api.cloudinary.com/v1_1/dugng8ekv/image/upload"
+    const key = "enqhkwlr"
+
+    const imageUpload = async (event) => {
+        const image = event.target.files[0];
+        const data = new FormData()
+        data.append("file", image)
+        data.append("upload_preset", key)
+        const res = await axios.post(api, data)
+        setUrl(res.data.url)
+    }
+    const imageURL = (event) => {
+        event.preventDefault()
+        fetch(new Request(image, { method: 'HEAD', mode: 'no-cors' }))
+            .then(response => {
+                if (response.ok) {
+                    setUrl(User)
+                }
+                else {
+                    setUrl(image)
+                }
+            })
+    }
+
+    const [modalState, setModalState] = useState("close");
     const handleShowModalSignIn = () => {
         setModalState("modalSignIn")
     }
@@ -27,7 +57,7 @@ export default function SignInModal() {
     const [form, setForm] = useState({
         name: "",
         lastName: "",
-        photo: "",
+        photo: url,
         mail: "",
         password: "",
         adress: "",
@@ -51,7 +81,7 @@ export default function SignInModal() {
         const userData = {
             name: form.name,
             lastName: form.lastName,
-            photo: form.photo,
+            photo: url,
             mail: form.mail,
             password: form.password,
             adress: form.adress,
@@ -60,7 +90,6 @@ export default function SignInModal() {
             role: 'user',
             from: 'form'
         }
-
         newUser(userData)
         event.target.reset()
     }
@@ -85,7 +114,6 @@ export default function SignInModal() {
 
         event.target.reset()
     }
-
 
 
     return (
@@ -131,9 +159,25 @@ export default function SignInModal() {
                 <Modal.Body>
                     <div className="ModalBodyContainer">
                         <form className='ModalForm' onSubmit={saveData}>
+                            <div className='DragImageContainer'>
+                                <img className="DragImagePreview" src={url} />
+                                <div className='DragImageFormContainer'>
+                                    <div>
+                                        <input type="file" name="file-input" id="file-input" className="file-input__input" accept="image/png, image/jpg, image/gif, image/jpeg" onChange={imageUpload} />
+                                        <label className="file-input__label" htmlFor="file-input">
+                                            <img className='DragImageIcon' src={Upload} />
+                                            <span>Upload Image</span>
+                                        </label>
+                                    </div>
+                                    <p className='DragImageText'>or</p>
+                                    <form className='DragImageForm'>
+                                        <input className='DragImageUrlInput' onChange={(event) => setImage(event.target.value)} name="photo" type='text' placeholder="Photo URL" />
+                                        <button className='DragImageUrlButton' onClick={imageURL}><img className='DragImageIcon' src={Check} /> </button>
+                                    </form>
+                                </div>
+                            </div>
                             <input onChange={captureData} className='ModalFormInput' name="name" type='text' placeholder="Name" required />
                             <input onChange={captureData} className='ModalFormInput' name="lastName" type='text' placeholder="Last Name" required />
-                            <input onChange={captureData} className='ModalFormInput' name="photo" type='text' placeholder="Photo URL" required />
                             <input onChange={captureData} className='ModalFormInput' name="mail" type='text' placeholder="Email" required />
                             <input onChange={captureData} className='ModalFormInput' name="password" type='password' placeholder="Password" required />
                             <input onChange={captureData} className='ModalFormInput' name="adress" type='text' placeholder="Address" required />
