@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import Accordion from 'react-bootstrap/Accordion';
 import EventProduct from '../EditProduct/EditProduct'
 import ModalCreate from '../CreateProduct/ModalCreate'
@@ -8,6 +10,7 @@ import CreateProductModal from '../CreateProduct/CreateProductModal'
 import SignOutModal from '../User/SignOutModal'
 import DeleteUserModal from '../User/DeleteUserModal'
 import ProductsProfile from './ProductsProfile';
+import { InitialProducts } from '../../features/slices/userProductsSlice';
 import { useGetProductsUserQuery } from '../../features/actions/ApiMethod';
 import "./Profile.css"
 import "./Sells.css"
@@ -15,9 +18,10 @@ import "./Sells.css"
 export default function Profile() {
     const [edit, setEdit] = useState(false)
     const [create, setCreate] = useState(false)
-    let User = JSON.parse(localStorage.getItem("useriInfo"))
+    const User = JSON.parse(localStorage.getItem("useriInfo"))
     const userID = User._id
     const rating = User.popularity
+    const dispatch = useDispatch()
 
     const Star = <img className='estrellita' src='https://img.icons8.com/color/344/christmas-star.png' />
     const EmptyStar = <img className='estrellita' src='https://img.icons8.com/color/344/star--v1.png' />
@@ -49,9 +53,14 @@ export default function Profile() {
 
     const { data: products } = useGetProductsUserQuery(userID)
 
+    useEffect(() => {
+        products?.map(products => dispatch(InitialProducts(products)))
+    }, [products])
+
+    const actualUserProducts = useSelector(state => state.userProducts)
 
 
-    console.log(products)
+    console.log(actualUserProducts)
     const closeEdit = () => {
         setEdit(false)
     }
@@ -135,7 +144,7 @@ export default function Profile() {
                         <Accordion.Header>Products on sale</Accordion.Header>
                         <Accordion.Body>
                             <ul className='ProductProfileContainer'>
-                                {products?.map(products => <ProductsProfile data={products} />)}
+                                {actualUserProducts?.map(products => <ProductsProfile data={products} />)}
                             </ul>
                         </Accordion.Body>
                     </Accordion.Item>

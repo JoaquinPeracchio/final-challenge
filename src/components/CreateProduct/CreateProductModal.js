@@ -3,15 +3,22 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Swal from 'sweetalert2'
+import { useDispatch } from 'react-redux'
+import { NewProduct } from '../../features/slices/userProductsSlice';
 import { useCreateProductMutation } from '../../features/actions/ApiMethod'
 import './Create.css'
+import "../Sign-In/SignInModal.css"
 
 export default function CreateProductModal() {
 
     const [show, setShow] = useState(false);
+    const User = JSON.parse(localStorage.getItem("useriInfo"))
+    const userID = User._id
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const dispatch = useDispatch()
+
 
 
     const [createProduct] = useCreateProductMutation()
@@ -53,6 +60,7 @@ export default function CreateProductModal() {
 
     useEffect(() => {
         let objCreate = {
+            _id: stock,
             name: name,
             user: '6345fbd9bb7e879c60015fe8',
             type: type,
@@ -61,9 +69,6 @@ export default function CreateProductModal() {
             stock: stock,
             price: price,
             photo: photo,
-
-
-
         }
 
         setEdit(objCreate)
@@ -77,7 +82,7 @@ export default function CreateProductModal() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // console.log(edit)
+        console.log(edit)
         //mandarlo al controlador create
 
         if (edit.name.length < 3) {
@@ -86,18 +91,21 @@ export default function CreateProductModal() {
                 text: 'please verify that the name has more than 2 letters and does not include numbers'
             })
         } else {
-            createProduct(edit)
-                .unwrap()
-                .then(() => { console.log('entro') })
-                .then((error) => {
-                    console.log(error)
-                })
-            Swal.fire({
-                icon: 'success',
-                title: 'Created Product with success',
-                text: 'Great , you can see the product in the product section',
-                confirmButtonText: 'Ok'
-            })
+            dispatch(NewProduct(edit))
+            console.log("entro")
+            handleClose()
+            // createProduct(edit)
+            //     .unwrap()
+            //     .then(() => { console.log('entro') })
+            //     .then((error) => {
+            //         console.log(error)
+            //     })
+            // Swal.fire({
+            //     icon: 'success',
+            //     title: 'Created Product with success',
+            //     text: 'Great , you can see the product in the product section',
+            //     confirmButtonText: 'Ok'
+            // })
 
 
         }
@@ -106,17 +114,14 @@ export default function CreateProductModal() {
 
     return (
         <>
-
             <button className='ProfileUserButton' onClick={handleShow}>New Product</button>
-
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Header closeButton id="ModalHeader">
+                    <Modal.Title id="ModalHeaderTitle">Create your New Product</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div className='createItiner'>
 
-                        <h5 className="createH3">Create your New Product </h5>
                         <p >Name Of Publication </p>
 
                         <input type='text' onChange={handleName}></input>
@@ -141,7 +146,7 @@ export default function CreateProductModal() {
                         </select>
                         <p>Date : {dayMonth}</p>
 
-                        
+
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
